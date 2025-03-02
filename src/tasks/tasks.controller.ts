@@ -1,24 +1,14 @@
-import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, HttpCode, HttpStatus, Inject } from '@nestjs/common';
+import { ITasksService } from './ports/tasks.service';
 
 @Controller('tasks')
 export class TasksController {
 
+    constructor(@Inject('ITasksService') private tasksService: ITasksService) {}
+
     @HttpCode(HttpStatus.OK)
     @Get()
     listTasks() {
-        return [
-            {
-                id: 1,
-                title: 'Task 1',
-                description: 'Description 1',
-                done: false,
-            },
-            {
-                id: 2,
-                title: 'Task 2',
-                description: 'Description 2',
-                done: false,
-            }
-        ]
+        return this.tasksService.listTasks();
     }
 }

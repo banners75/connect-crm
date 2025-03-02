@@ -72,4 +72,12 @@ describe('LoginService', () => {
     await expect(service.signIn(username, password)).rejects.toThrow();
   }
   );
+
+  it('should throw UnauthorizedException when user is not found', async () => {
+    const username = 'unknown user';
+    const password = 'any';
+    mockUserService.findOne.mockResolvedValue(undefined);
+    await expect(service.signIn(username, password)).rejects.toThrow();
+  }
+  );
 });
