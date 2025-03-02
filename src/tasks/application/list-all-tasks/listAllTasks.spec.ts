@@ -1,18 +1,18 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TasksService } from './tasks.service';
+import { ListAllTasks } from './listAllTasks';
 
 describe('TasksService', () => {
-  let service: TasksService;
+  let command: ListAllTasks;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [TasksService],
+      providers: [ListAllTasks],
     }).compile();
 
-    service = module.get<TasksService>(TasksService);
+    command = module.get<ListAllTasks>(ListAllTasks);
   });
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
+    expect(command).toBeDefined();
   });
 });

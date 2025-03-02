@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TasksController } from './tasks.controller';
-import { TasksService } from './tasks.service';
+import { ListAllTasks } from '../application/list-all-tasks/listAllTasks';
+import { CreateTask } from '../application/create-task/createTask';
 
 @Module({
   controllers: [TasksController],
   providers: [
-    {
-      provide: 'ITasksService',
-      useClass: TasksService
-    }]
+    ListAllTasks,
+    CreateTask,
+    ]
 })
 export class TasksModule { }

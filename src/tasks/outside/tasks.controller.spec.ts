@@ -1,12 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TasksController } from './tasks.controller';
-import { TasksService } from './tasks.service';
+import { ListAllTasks } from '../application/list-all-tasks/listAllTasks';
+import { CreateTask } from '../application/create-task/createTask';
 
 describe('TasksController', () => {
   let controller: TasksController;
 
-  let mockTasksService = {
-    listTasks: jest.fn()
+  let mockListAllTasks = {
+    execute: jest.fn()
+  }
+
+  let mockCreateTask = { 
+    execute: jest.fn()
   }
 
   beforeEach(async () => {
@@ -14,9 +19,13 @@ describe('TasksController', () => {
       controllers: [TasksController],
       providers: [
         {
-          provide: 'ITasksService',
-          useValue: mockTasksService
+          provide: ListAllTasks,
+          useValue: mockListAllTasks
         },
+        {
+          provide: CreateTask,
+          useValue: mockCreateTask
+        }
       ]
     }).compile();
 
@@ -44,8 +53,8 @@ describe('TasksController', () => {
       }
     ]
 
-    mockTasksService.listTasks.mockReturnValue(tasks);
+    mockListAllTasks.execute.mockReturnValue(tasks);
 
-    expect(controller.listTasks()).toEqual(tasks);
+    expect(controller.list()).toEqual(tasks);
   });
 });

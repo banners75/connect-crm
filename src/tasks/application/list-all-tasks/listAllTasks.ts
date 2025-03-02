@@ -1,9 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { ITasksService } from './ports/tasks.service';
 
 @Injectable()
-export class TasksService implements ITasksService {
-    listTasks() {
+export class ListAllTasks  {
+    execute() {
         var tasks = [
             {
               id: 1,
