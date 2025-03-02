@@ -5,7 +5,7 @@ import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class LoginService {
-  constructor(private usersService: UserService, private jwtService: JwtService) 
+  constructor(private userService: UserService, private jwtService: JwtService) 
   {
   }
 
@@ -15,7 +15,7 @@ export class LoginService {
         throw new UnauthorizedException();
     }
 
-    const user = await this.usersService.findOne(username);
+    const user = await this.userService.findOne(username);
 
     if (user?.password !== password) {
       throw new UnauthorizedException();
