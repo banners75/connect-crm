@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
 import { ContactModule } from './contact/contact.module';
 import { TasksModule } from './tasks/outside/tasks.module';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth/outside/auth.module';
 
 @Module({
   imports: [UserModule, ContactModule, TasksModule, AuthModule],

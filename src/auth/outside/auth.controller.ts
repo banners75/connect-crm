@@ -1,6 +1,6 @@
 
 import { Body, Controller, Post, HttpCode, HttpStatus } from '@nestjs/common';
-import { LoginService } from './login/login.service';
+import { LoginService } from '../application/login/login.service';
 import { Public } from './constants';
 
 
