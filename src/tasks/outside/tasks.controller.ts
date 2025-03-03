@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Inject, Injectable, Post } from '@nestjs/common';
 import { ListAllTasks } from '../domain/list-all-tasks/listAllTasks';
 import { CreateTask } from '../domain/create-task/createTask';
 import { CreateTaskDto } from './createTaskDto';
@@ -6,10 +6,9 @@ import { CreateTaskDto } from './createTaskDto';
 @Controller('tasks')
 export class TasksController {
 
-    constructor(
-        private listAllTasks: ListAllTasks,
-        private createTask: CreateTask
-    ) {}
+    constructor(private listAllTasks: ListAllTasks, private createTask: CreateTask)
+    {
+    }
 
     @HttpCode(HttpStatus.OK)
     @Get()

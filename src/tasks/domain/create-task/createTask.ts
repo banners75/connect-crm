@@ -1,10 +1,9 @@
-import { Inject } from "@nestjs/common";
 import { Task } from "../model/task";
 import { ITaskRepository } from "../model/taskRepository";
 
 export class CreateTask {
 
-    constructor(@Inject('ITaskRepository') private taskRepository: ITaskRepository){}
+    constructor(private taskRepository: ITaskRepository){}
 
     async execute(task: { title: string; description: string; }) {
         
