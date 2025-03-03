@@ -5,7 +5,9 @@ describe('CreateTask', () => {
   let command: CreateTask;
 
   let mockTaskRepository = {
-    create: jest.fn()
+    create: jest.fn(),
+    delete: jest.fn(),
+    find: jest.fn()
   }
 
   beforeEach(async () => {
