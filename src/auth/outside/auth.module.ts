@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { LoginService } from '../application/login/login.service';
-import { LogoutService } from '../application/logout/logout.service';
-import { RegisterService } from '../application/register/register.service';
+import { LoginService } from '../domain/login/login.service';
+import { LogoutService } from '../domain/logout/logout.service';
+import { RegisterService } from '../domain/register/register.service';
 import { AuthController } from './auth.controller';
 import { UserModule } from 'src/user/user.module';
 import { JwtModule } from '@nestjs/jwt';

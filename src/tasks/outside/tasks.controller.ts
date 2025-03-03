@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Inject, Post } from '@nestjs/common';
-import { ListAllTasks } from '../application/list-all-tasks/listAllTasks';
-import { CreateTask } from '../application/create-task/createTask';
+import { ListAllTasks } from '../domain/list-all-tasks/listAllTasks';
+import { CreateTask } from '../domain/create-task/createTask';
 import { CreateTaskDto } from './createTaskDto';
 
 @Controller('tasks')

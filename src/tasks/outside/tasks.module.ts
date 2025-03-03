@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TasksController } from './tasks.controller';
-import { ListAllTasks } from '../application/list-all-tasks/listAllTasks';
-import { CreateTask } from '../application/create-task/createTask';
+import { ListAllTasks } from '../domain/list-all-tasks/listAllTasks';
+import { CreateTask } from '../domain/create-task/createTask';
 
 @Module({
   controllers: [TasksController],

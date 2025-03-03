@@ -1,6 +1,6 @@
 import { Inject } from "@nestjs/common";
-import { Task } from "../../domain/task";
-import { ITaskRepository } from "../../domain/taskRepository";
+import { Task } from "../model/task";
+import { ITaskRepository } from "../model/taskRepository";
 
 export class CreateTask {
 

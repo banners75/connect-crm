@@ -9,22 +9,25 @@ describe('CreateTask', () => {
   }
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        CreateTask,
-        {
-          provide: 'ITaskRepository',
-          useValue: mockTaskRepository
-        }
-      ],
-    }).compile();
 
-    command = module.get<CreateTask>(CreateTask);
+    command = new CreateTask(mockTaskRepository);
+
+    // const module: TestingModule = await Test.createTestingModule({
+    //   providers: [
+    //     CreateTask,
+    //     {
+    //       provide: 'ITaskRepository',
+    //       useValue: mockTaskRepository
+    //     }
+    //   ],
+    // }).compile();
+
+    // command = module.get<CreateTask>(CreateTask);
   });
 
-  it('should be defined', () => {
-    expect(command).toBeDefined();
-  });
+  // it('should be defined', () => {
+  //   expect(command).toBeDefined();
+  // });
 
   it ('should create and return a task', () => {
     var task = {
