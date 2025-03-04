@@ -11,7 +11,10 @@ export class SqlTaskRepository implements ITaskRepository {
     async findAll(): Promise<Task[]> {
         
         const tasks = await this.prisma.task.findMany();
+        return this.mapTasks(tasks);
+    }
 
+    private mapTasks(tasks: { id: number; title: string; description: string; completed: boolean | null; }[]): any {
         return tasks.map((task) => {
             var response = new Task();
             response.id = task.id;

@@ -5,7 +5,7 @@ export class ListAllTasks  {
     constructor(private taskRepository: ITaskRepository){} 
 
     async execute() : Promise<Task[]> {
-        var tasks = await this.taskRepository.findAll();
+        var tasks = this.taskRepository.findAll();
         return tasks;
     }
 }
