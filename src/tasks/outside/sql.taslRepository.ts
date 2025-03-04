@@ -7,10 +7,11 @@ import { PrismaService } from "src/prisma.service";
 export class SqlTaskRepository implements ITaskRepository {
 
     constructor(private prisma: PrismaService){}
-    
+
     async findAll(): Promise<Task[]> {
         
         const tasks = await this.prisma.task.findMany();
+
         return tasks.map((task) => {
             var response = new Task();
             response.id = task.id;
