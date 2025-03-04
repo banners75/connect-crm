@@ -3,9 +3,15 @@ import { ListAllTasks } from './listAllTasks';
 describe('TasksService', () => {
   let command: ListAllTasks;
 
-  command = new ListAllTasks();
+  let mockTaskRepository = {
+    create: jest.fn(),
+    delete: jest.fn(),
+    find: jest.fn(),
+    findAll: jest.fn()
+  }
 
   beforeEach(async () => {
+    command = new ListAllTasks(mockTaskRepository);
   });
     
   it('should be defined', () => {

@@ -1,20 +1,11 @@
-export class ListAllTasks  {
-    execute() {
-        var tasks = [
-            {
-              id: 1,
-              title: 'Service Task 1',
-              description: 'Description 1',
-              done: false,
-            },
-            {
-              id: 2,
-              title: 'Service Task 2',
-              description: 'Description 2',
-              done: false,
-            }
-          ]
+import { Task } from "@prisma/client";
+import { ITaskRepository } from "../model/taskRepository";
 
-          return tasks;
+export class ListAllTasks  {
+    constructor(private taskRepository: ITaskRepository){} 
+
+    async execute() {
+        var tasks = await this.taskRepository.findAll();
+        return tasks;
     }
 }

@@ -8,7 +8,6 @@ export class CreateTask {
     async execute(task: { title: string; description: string; }) {
         
         var taskModel = new Task();
-        taskModel.id = 1
         taskModel.title = task.title;
         taskModel.description = task.description;
         taskModel.completed = false;
