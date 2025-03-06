@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "pavan-your-terraform-state-bucket"
-    key    = "ecs/hello-world-app/terraform.tfstate"
-    region = "ap-south-1"
+    bucket = "my-terraform-state-bucket"
+    key    = "ecs/connect-crm/terraform.tfstate"
+    region = "eu-west-1"
   }
 }
 
@@ -44,7 +44,7 @@ resource "aws_ecs_task_definition" "task" {
   container_definitions = jsonencode([
     {
       name          = var.app_name
-      image         = "567738737859.dkr.ecr.ap-south-1.amazonaws.com/hello-world-app:latest"
+      image         = "841162685193.dkr.ecr.eu-west-1.amazonaws.com/connect-crm:latest"
       essential     = true
       portMappings  = [
         {
