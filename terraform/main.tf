@@ -1,104 +1,84 @@
-terraform {
-  backend "s3" {
-    bucket = "banfield-terraform-state-bucket"
-    key    = "ecs/connect-crm/terraform.tfstate"
-    region = "eu-west-1"
+# Provider definition
+provider "aws" {
+  region = "eu-west-1"
+}
+
+# VPC definition
+data "aws_vpc" "existing" {
+  id = "vpc-09774259185288227"
+}
+
+data "aws_iam_role" "ecs_task_execution_role" {
+  name = "ecsTaskExecutionRole"
+}
+
+# Security group for the ECS tasks
+resource "aws_security_group" "ecs_sg" {
+  vpc_id = data.aws_vpc.existing.id
+  name   = "ecs-security-group"
+  # Inbound and outbound rules
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
-provider "aws" {
-  region = var.region
-}
+# ECS task definition
+resource "aws_ecs_task_definition" "task_definition" {
+  family                = "connect-crm-api-task"
+  network_mode          = "awsvpc"
+  memory                = "512"
+  requires_compatibilities = ["FARGATE"]
 
-resource "aws_ecs_cluster" "cluster" {
-  name = var.ecs_cluster_name
-}
+  # Task execution role
+  execution_role_arn    = "${data.aws_iam_role.ecs_task_execution_role.arn}"  
 
-resource "aws_iam_role" "ecs_task_execution_role" {
-  name = "ecsTaskExecutionRole"
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Principal = {
-          Service = "ecs-tasks.amazonaws.com"
-        }
-        Action = "sts:AssumeRole"
-      }
-    ]
-  })
-
-  managed_policy_arns = [
-    "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
-  ]
-}
-
-resource "aws_ecs_task_definition" "task" {
-  family                   = var.app_name
-  network_mode             = "awsvpc"
-  cpu                      = "256"
-  memory                   = "512"
-  execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
-
+  # Container definition
   container_definitions = jsonencode([
     {
-      name          = var.app_name
-      image         = "841162685193.dkr.ecr.eu-west-1.amazonaws.com/connect-crm:latest"
-      essential     = true
-      portMappings  = [
+      name      = "connect-crm-api-container"
+      image     = "841162685193.dkr.ecr.eu-west-1.amazonaws.com/connect-crm:latest" 
+      cpu       = 256
+      memory    = 512
+      port_mappings = [
         {
-          containerPort = 3000
-          hostPort      = 3000
+          container_port = 3000
+          host_port      = 3000
+          protocol       = "tcp"
         }
       ]
     }
   ])
+
+  # Defining the task-level CPU
+  cpu = "256"  
+}
+
+# ECS service
+resource "aws_ecs_cluster" "ecs_cluster" {
+  name = "connect-crm-api-cluster"  
 }
 
 resource "aws_ecs_service" "service" {
-  name            = var.app_name
-  cluster         = aws_ecs_cluster.cluster.id
-  task_definition = aws_ecs_task_definition.task.arn
+  name            = "connect-crm-api-service"
+  cluster         = aws_ecs_cluster.ecs_cluster.id
+  task_definition = aws_ecs_task_definition.task_definition.arn
   desired_count   = 1
   launch_type     = "FARGATE"
 
+  # Network configuration
   network_configuration {
-    subnets         = var.subnet_ids
+    subnets          = ["subnet-05876b145e48c2c2f", "subnet-016a90de1c15a2532", "subnet-08842b14f7019286a"]
+    security_groups  = [aws_security_group.ecs_sg.id]
     assign_public_ip = true
-    security_groups = ["sg-027d969e3ab7b2fdc"]
-  }
-
-  load_balancer {
-    target_group_arn = aws_lb_target_group.app_target_group.arn
-    container_name   = var.app_name
-    container_port   = 3000
   }
 }
 
-resource "aws_lb" "app_lb" {
-  name               = "${var.app_name}-lb"
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = ["sg-027d969e3ab7b2fdc"]
-  subnets            = var.subnet_ids
-}
-
-resource "aws_lb_target_group" "app_target_group" {
-  name        = "${var.app_name}-tg"
-  port        = 3000
-  protocol    = "HTTP"
-  vpc_id      = var.vpc_id
-  target_type = "ip"
-}
-
-resource "aws_lb_listener" "app_listener" {
-  load_balancer_arn = aws_lb.app_lb.arn
-  port              = "80"
-  protocol          = "HTTP"
-
-  default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.app_target_group.arn
-  }
-}
