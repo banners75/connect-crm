@@ -8,6 +8,7 @@ export class ContactsService {
   }
 
   create(contact: Contact) { 
+    this.logger.log('ContactsService.create was called');
     return this.contactsRepository.create(contact);
   }
 
