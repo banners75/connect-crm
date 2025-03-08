@@ -4,4 +4,5 @@ export class Contact {
     email: any;
     phone: any;
     notes: any;
+    owner: any;
 }

@@ -12,6 +12,7 @@ export class SqlContactRepository implements IContactsRepository {
                 email: contact.email,
                 phone: contact.phone,
                 notes: contact.notes,
+                owner: contact.owner
             },
         });
     }
@@ -25,8 +26,9 @@ export class SqlContactRepository implements IContactsRepository {
         }).then(() => true).catch(() => false);
     }
     
-    findAll(): Promise<Contact[]> {
-        return this.prismaService.contact.findMany();
+    async findAll(): Promise<Contact[]> {
+        var result = this.prismaService.contact.findMany();
+        return result;
     }
     find(id: number): Promise<Contact> {
         throw new Error("Method not implemented.");

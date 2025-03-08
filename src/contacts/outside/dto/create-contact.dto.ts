@@ -3,4 +3,5 @@ export class CreateContactDto {
     email: string;
     phone: string;
     notes: string;
+    owner: string;
 }

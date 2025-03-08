@@ -26,4 +26,12 @@ model Contact {
   email  String
   phone  String
   notes  String?
+  ownedBy User @relation(fields: [owner], references: [username])
+  owner String
+}
+
+model User {
+  username String @unique
+  password String
+  contacts Contact[]
 }
