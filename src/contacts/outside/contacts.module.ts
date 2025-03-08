@@ -3,7 +3,7 @@ import { ContactsController } from './contacts.controller';
 import { ContactsService } from '../domain/contacts.service';
 import { PrismaService } from 'src/prisma.service';
 import { SqlContactRepository } from './sql.contacts.repository';
-import { CustomLogger } from 'src/CustomLogger';
+import { CustomLogger } from 'src/logging/CustomLogger';
 
 
 @Module({

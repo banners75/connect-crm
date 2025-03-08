@@ -25,7 +25,6 @@ export class ContactsController {
 
   @Get()
   findAll() {
-    this.logger.log('hello');
     return this.contactsService.findAll();
   }
 

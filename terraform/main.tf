@@ -55,6 +55,24 @@ resource "aws_ecs_task_definition" "task_definition" {
           protocol       = "tcp"
         }
       ]
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          "awslogs-group"         = aws_cloudwatch_log_group.ecs_log_group.name
+          "awslogs-region"        = "eu-west-1" 
+          "awslogs-stream-prefix" = "connect-crm"
+        }
+      }
+      environment = [
+        {
+          name = "NODE_ENV",
+          value = "development" # "production"
+        },
+        {
+          name  = "DATABASE_URL"
+          value = "file:./dev.db"
+        }
+      ]
     }
   ])
 
@@ -82,3 +100,31 @@ resource "aws_ecs_service" "service" {
   }
 }
 
+resource "aws_cloudwatch_log_group" "ecs_log_group" {
+  name              = "/ecs/my-app-logs"
+  retention_in_days = 7 # Set the retention period
+}
+
+
+resource "aws_iam_role_policy" "ecs_task_execution_policy" {
+  name   = "ecsTaskExecutionPolicy"
+  role   = "${data.aws_iam_role.ecs_task_execution_role.id}" 
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action   = [
+          "logs:CreateLogStream",
+          "logs:PutLogEvents"
+        ]
+        Effect   = "Allow"
+        Resource = "*"
+      },
+      {
+        Action   = "ecs:UpdateContainerInstancesState"
+        Effect   = "Allow"
+        Resource = "*"
+      },
+    ]
+  })
+}

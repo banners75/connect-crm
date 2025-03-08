@@ -6,7 +6,7 @@ import { ConsoleLogger, LogLevel } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, 
     {
-      logger: new ConsoleLogger({ logLevels: getLogLevels(false), json: true, colors: true }) 
+      logger: new ConsoleLogger({ logLevels: getLogLevels(process.env.NODE_ENV === 'production'), json: true, colors: true }) 
     }
   );
 

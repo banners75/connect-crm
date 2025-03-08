@@ -1,6 +1,6 @@
 import { IContactsRepository } from './contacts.repository';
 import { Contact } from './contact.entity';
-import { ILogger } from 'src/logger';
+import { ILogger } from 'src/logging/logger';
 
 export class ContactsService {
 
