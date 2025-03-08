@@ -1,9 +1,10 @@
 import { IContactsRepository } from './contacts.repository';
 import { Contact } from './contact.entity';
+import { ILogger } from 'src/logger';
 
 export class ContactsService {
 
-  constructor(private contactsRepository: IContactsRepository) {
+  constructor(private contactsRepository: IContactsRepository, private logger: ILogger) {
   }
 
   create(contact: Contact) { 
@@ -11,6 +12,7 @@ export class ContactsService {
   }
 
   findAll() {
+    this.logger.log('ContactsService.findAll was called');
     return this.contactsRepository.findAll();
   }
 

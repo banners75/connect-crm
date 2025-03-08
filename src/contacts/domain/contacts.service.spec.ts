@@ -13,8 +13,16 @@ describe('ContactsService', () => {
       update: jest.fn(),
       delete: jest.fn()
     }
+
+    let logger = {
+      log: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+      debug: jest.fn(),
+      verbose: jest.fn()
+    }
     
-    service = new ContactsService(contactsRepository);
+    service = new ContactsService(contactsRepository, logger);
   });
 
   it('should be defined', () => {

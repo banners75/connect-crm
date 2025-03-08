@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Logger } from '@nestjs/common';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
 import { ContactsService } from '../domain/contacts.service';
@@ -6,10 +6,13 @@ import { Contact } from '../domain/contact.entity';
 
 @Controller('contacts')
 export class ContactsController {
+
+  private readonly logger = new Logger(ContactsController.name);
+
   constructor(private readonly contactsService: ContactsService) {}
 
   @Post()
-  create(@Body() createContactDto: CreateContactDto) {
+  create(@Body() createContactDto: CreateContactDto) {  
     
     const contact = new Contact();
     contact.name = createContactDto.name;
@@ -22,6 +25,7 @@ export class ContactsController {
 
   @Get()
   findAll() {
+    this.logger.log('hello');
     return this.contactsService.findAll();
   }
 
