@@ -1,6 +1,6 @@
 
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from '../prisma.service';
 
 
 export type User = any;
@@ -8,11 +8,13 @@ export type User = any;
 @Injectable()
 export class UserService {
 
+  //TODO: Prisma service should be called from repository
+
   constructor(private prismaService: PrismaService) { }
 
   async create(username: any, password: any): Promise<User> {
 
-    await this.findOne(username).then((user) => {
+    return this.findOne(username).then((user) => {
 
       if (user) {
         throw new Error("username already exists");

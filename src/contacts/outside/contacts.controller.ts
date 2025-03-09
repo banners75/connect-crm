@@ -3,14 +3,13 @@ import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
 import { ContactsService } from '../domain/contacts.service';
 import { Contact } from '../domain/contact.entity';
-import { UserService } from 'src/user/user.service';
 
 @Controller('contacts')
 export class ContactsController {
 
   private readonly logger = new Logger(ContactsController.name);
 
-  constructor(private readonly contactsService: ContactsService, private readonly userService: UserService) {}
+  constructor(private readonly contactsService: ContactsService) {}
 
   @Post()
   create(@Body() createContactDto: CreateContactDto, @Req() request: Request) {  

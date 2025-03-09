@@ -4,17 +4,11 @@ import { ContactsService } from '../domain/contacts.service';
 import { PrismaService } from 'src/prisma.service';
 import { SqlContactRepository } from './sql.contacts.repository';
 import { CustomLogger } from 'src/logging/CustomLogger';
-import { UserModule } from 'src/user/user.module';
-import { UserService } from 'src/user/user.service';
-
 
 @Module({
-  imports: [
-      UserModule
-  ],
+  imports: [],
   controllers: [ContactsController],
   providers: [
-    UserService,
     Logger,
     PrismaService,
     {

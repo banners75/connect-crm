@@ -23,6 +23,4 @@ export class AuthController {
       throw new HttpException('Username already exists', HttpStatus.FORBIDDEN);
     });
   }
-
-
 }
