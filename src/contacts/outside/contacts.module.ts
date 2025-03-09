@@ -14,10 +14,10 @@ import { CustomLogger } from 'src/logging/CustomLogger';
     {
       provide: ContactsService,
       useValue: new ContactsService(
-        new SqlContactRepository(new PrismaService()), 
-        new CustomLogger(new Logger(ContactsService.name))
-      )
-    }
-  ]
+        new SqlContactRepository(new PrismaService()),
+        new CustomLogger(new Logger(ContactsService.name)),
+      ),
+    },
+  ],
 })
 export class ContactsModule {}

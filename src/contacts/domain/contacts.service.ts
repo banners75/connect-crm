@@ -3,11 +3,12 @@ import { Contact } from './contact.entity';
 import { ILogger } from 'src/logging/logger';
 
 export class ContactsService {
+  constructor(
+    private contactsRepository: IContactsRepository,
+    private logger: ILogger,
+  ) {}
 
-  constructor(private contactsRepository: IContactsRepository, private logger: ILogger) {
-  }
-
-  create(contact: Contact) { 
+  create(contact: Contact) {
     this.logger.log('ContactsService.create was called');
     return this.contactsRepository.create(contact);
   }

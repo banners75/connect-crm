@@ -4,23 +4,23 @@ import { ListAllTasks } from './listAllTasks';
 describe('TasksService', () => {
   let command: ListAllTasks;
 
-  let mockTaskRepository = {
+  const mockTaskRepository = {
     create: jest.fn(),
     delete: jest.fn(),
     find: jest.fn(),
-    findAll: jest.fn()
-  }
+    findAll: jest.fn(),
+  };
 
   beforeEach(async () => {
     command = new ListAllTasks(mockTaskRepository);
   });
-    
+
   it('should be defined', () => {
     expect(command).toBeDefined();
   });
 
   it('should return an array of tasks', () => {
-    var tasks = [
+    const tasks = [
       {
         id: 1,
         title: 'Task 1',
@@ -32,8 +32,8 @@ describe('TasksService', () => {
         title: 'Task 2',
         description: 'Description 2',
         done: false,
-      }
-    ]
+      },
+    ];
 
     mockTaskRepository.findAll.mockReturnValue(tasks);
 
@@ -41,11 +41,10 @@ describe('TasksService', () => {
   });
 
   it('should return an empty array of tasks when no tasks are returned from the repository', () => {
-    
-    var tasks: Task[] = [];
+    const tasks: Task[] = [];
 
     mockTaskRepository.findAll.mockReturnValue(tasks);
 
-    expect(command.execute()).resolves.toEqual(tasks)
+    expect(command.execute()).resolves.toEqual(tasks);
   });
 });

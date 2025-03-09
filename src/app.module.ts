@@ -7,7 +7,13 @@ import { ContactsModule } from './contacts/outside/contacts.module';
 import { PrismaService } from './prisma.service';
 
 @Module({
-  imports: [UserModule, TasksModule, AuthModule, ConfigModule.forRoot(), ContactsModule],
+  imports: [
+    UserModule,
+    TasksModule,
+    AuthModule,
+    ConfigModule.forRoot(),
+    ContactsModule,
+  ],
   controllers: [],
   providers: [PrismaService],
 })

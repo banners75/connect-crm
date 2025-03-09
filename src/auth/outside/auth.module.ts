@@ -21,17 +21,17 @@ import { PrismaService } from 'src/prisma.service';
     }),
   ],
   providers: [
-    LoginService, 
-    LogoutService, 
+    LoginService,
+    LogoutService,
     RegisterService,
     UserService,
     PrismaService,
     {
       provide: APP_GUARD,
-      useClass: AuthGuard
-    }
+      useClass: AuthGuard,
+    },
   ],
-  
-  controllers: [AuthController]
+
+  controllers: [AuthController],
 })
 export class AuthModule {}

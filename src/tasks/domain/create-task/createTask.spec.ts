@@ -4,34 +4,31 @@ import { CreateTask } from './createTask';
 describe('CreateTask', () => {
   let command: CreateTask;
 
-  let mockTaskRepository = {
+  const mockTaskRepository = {
     create: jest.fn(),
     delete: jest.fn(),
     find: jest.fn(),
-    findAll: jest.fn()
-  }
+    findAll: jest.fn(),
+  };
 
   beforeEach(async () => {
-
     command = new CreateTask(mockTaskRepository);
-  }
-  );
-  it ('should create and return a task', () => {
-    var task = {
+  });
+  it('should create and return a task', () => {
+    const task = {
       title: 'Task 1',
       description: 'Description 1',
-    }
+    };
 
-    var createdTask = {
+    const createdTask = {
       id: 1,
       title: 'Task 1',
       description: 'Description 1',
       completed: false,
-    }
+    };
 
     mockTaskRepository.create.mockReturnValue(createdTask);
 
     expect(command.execute(task)).resolves.toMatchObject(createdTask);
-  }
-  );
+  });
 });

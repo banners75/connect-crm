@@ -14,7 +14,13 @@ describe('AuthController', () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [UserModule],
       controllers: [AuthController],
-      providers: [LoginService, UserService, JwtService, PrismaService, RegisterService],
+      providers: [
+        LoginService,
+        UserService,
+        JwtService,
+        PrismaService,
+        RegisterService,
+      ],
     }).compile();
 
     controller = module.get<AuthController>(AuthController);

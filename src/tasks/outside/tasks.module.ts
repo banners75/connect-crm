@@ -10,12 +10,12 @@ import { PrismaService } from 'src/prisma.service';
   providers: [
     {
       provide: ListAllTasks,
-      useValue: new ListAllTasks(new SqlTaskRepository(new PrismaService()))
+      useValue: new ListAllTasks(new SqlTaskRepository(new PrismaService())),
     },
     {
       provide: CreateTask,
-      useValue: new CreateTask(new SqlTaskRepository(new PrismaService()))
-    }
-  ]
+      useValue: new CreateTask(new SqlTaskRepository(new PrismaService())),
+    },
+  ],
 })
-export class TasksModule { }
+export class TasksModule {}

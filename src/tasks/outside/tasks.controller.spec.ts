@@ -6,13 +6,13 @@ import { CreateTask } from '../domain/create-task/createTask';
 describe('TasksController', () => {
   let controller: TasksController;
 
-  let mockListAllTasks = {
-    execute: jest.fn()
-  }
+  const mockListAllTasks = {
+    execute: jest.fn(),
+  };
 
-  let mockCreateTask = { 
-    execute: jest.fn()
-  }
+  const mockCreateTask = {
+    execute: jest.fn(),
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -20,13 +20,13 @@ describe('TasksController', () => {
       providers: [
         {
           provide: ListAllTasks,
-          useValue: mockListAllTasks
+          useValue: mockListAllTasks,
         },
         {
           provide: CreateTask,
-          useValue: mockCreateTask
-        }
-      ]
+          useValue: mockCreateTask,
+        },
+      ],
     }).compile();
 
     controller = module.get<TasksController>(TasksController);
@@ -37,8 +37,7 @@ describe('TasksController', () => {
   });
 
   it('should return an array of tasks', () => {
-
-    var tasks = [
+    const tasks = [
       {
         id: 1,
         title: 'Task 1',
@@ -50,8 +49,8 @@ describe('TasksController', () => {
         title: 'Task 2',
         description: 'Description 2',
         done: false,
-      }
-    ]
+      },
+    ];
 
     mockListAllTasks.execute.mockReturnValue(tasks);
 
