@@ -9,6 +9,8 @@ COPY prisma ./
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
+RUN apt-get update && apt-get install --only-upgrade wget
+
 # Install the application dependencies
 RUN npm install
 
