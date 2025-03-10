@@ -32,9 +32,12 @@ export class AuthGuard implements CanActivate {
       throw new UnauthorizedException();
     }
     try {
+      /* eslint-disable */
       const payload = await this.jwtService.verifyAsync<String>(token, {
         secret: jwtConstants.secret,
       });
+      /* eslint-enable */
+
       // 💡 We're assigning the payload to the request object here
       // so that we can access it in our route handlers
       request['user'] = payload;
