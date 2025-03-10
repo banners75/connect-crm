@@ -7,30 +7,45 @@ on:
 
 jobs:
 
-  run-linters:
-    name: Run linters
+  lint:
+    name: Run ESLint & Prettier
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - name: Check out Git repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 22.14
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
 
-      # ESLint and Prettier must be in `package.json`
-      - name: Install Node.js dependencies
+      - name: Install dependencies
         run: npm ci
 
-      - name: Run linters
-        uses: wearerequired/lint-action@v2
+      - name: Run ESLint
+        run: |
+          npx eslint '{src,apps,libs,test}/**/*.ts' --format json --output-file eslint-report.json || true
+
+      - name: Upload ESLint report
+        uses: actions/upload-artifact@v4
         with:
-          eslint: true
-          prettier: true
+          name: eslint-report
+          path: eslint-report.json
+
+      - name: Annotate ESLint Errors
+        uses: ataylorme/eslint-annotate-action@v2
+        with:
+          report-json: eslint-report.json
+
+      - name: Run Prettier Check
+        run: |
+          npx prettier --check './src/**/*.{js,ts}'
+
+      - name: Fail if Linting Issues Found
+        run: |
+          if grep -q '"severity":' eslint-report.json; then
+            echo "❌ ESLint errors found!"
+            exit 1
+          fi
 
   scan:
     permissions:
