@@ -117,7 +117,7 @@ jobs:
 
       - name: Run Tests with Coverage
         run: |
-          npx jest --ci --reporters=default --reporters=jest-junit --coverage --coverageReporters=lcov --coverageReporters=html 
+          npx jest --ci --reporters=default --reporters=jest-junit --coverage --coverageReporters=lcov --coverageReporters=html --verbose
 
       - name: List files in the reports directory
         run: ls -al reports
