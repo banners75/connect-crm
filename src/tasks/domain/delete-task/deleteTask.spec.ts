@@ -27,7 +27,7 @@ describe('DeleteTask', () => {
     taskRepository.find.mockResolvedValue(taskToDelete);
     taskRepository.delete.mockReturnValue(true);
 
-    expect(command.execute(taskToDelete)).resolves.toBe(true);
+    void expect(command.execute(taskToDelete)).resolves.toBe(true);
   });
 
   it('should throw an exception when task is not found', () => {
@@ -40,6 +40,6 @@ describe('DeleteTask', () => {
 
     taskRepository.delete.mockReturnValue(false);
 
-    expect(command.execute(taskToDelete)).rejects.toThrow();
+    void expect(command.execute(taskToDelete)).rejects.toThrow();
   });
 });

@@ -28,6 +28,6 @@ describe('CreateTask', () => {
 
     mockTaskRepository.create.mockReturnValue(createdTask);
 
-    expect(command.execute(task)).resolves.toMatchObject(createdTask);
+    void expect(command.execute(task)).resolves.toMatchObject(createdTask);
   });
 });

@@ -20,13 +20,13 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Public()
   @Post('login')
-  signIn(@Body() signInDto: Record<string, any>) {
+  signIn(@Body() signInDto: Record<string, string>) {
     return this.authService.signIn(signInDto.username, signInDto.password);
   }
 
   @Public()
   @Post('register')
-  register(@Body() registerDto: Record<string, any>) {
+  register(@Body() registerDto: Record<string, string>) {
     return this.registerService
       .register(registerDto.username, registerDto.password)
       .catch(() => {
