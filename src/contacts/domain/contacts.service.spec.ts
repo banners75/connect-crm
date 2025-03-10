@@ -3,7 +3,7 @@ import { ContactsService } from './contacts.service';
 describe('ContactsService', () => {
   let service: ContactsService;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     const contactsRepository = {
       create: jest.fn(),
       findAll: jest.fn(),

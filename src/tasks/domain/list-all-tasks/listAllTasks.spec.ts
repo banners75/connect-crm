@@ -11,7 +11,7 @@ describe('TasksService', () => {
     findAll: jest.fn(),
   };
 
-  beforeEach(async () => {
+  beforeEach(() => {
     command = new ListAllTasks(mockTaskRepository);
   });
 

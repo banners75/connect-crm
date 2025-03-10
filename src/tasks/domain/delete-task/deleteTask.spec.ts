@@ -1,14 +1,16 @@
 import { DeleteTask } from './deleteTask';
+import { ITaskRepository } from '../model/taskRepository';
 
 describe('DeleteTask', () => {
   let command: DeleteTask;
-  let taskRepository: any;
+  let taskRepository: jest.Mocked<ITaskRepository>;
 
-  beforeEach(async () => {
+  beforeEach(() => {
     taskRepository = {
       delete: jest.fn(),
       create: jest.fn(),
       find: jest.fn(),
+      findAll: jest.fn(),
     };
 
     //do setup
@@ -22,7 +24,7 @@ describe('DeleteTask', () => {
       completed: false,
     };
 
-    taskRepository.find.mockReturnValue(taskToDelete);
+    taskRepository.find.mockResolvedValue(taskToDelete);
     taskRepository.delete.mockReturnValue(true);
 
     expect(command.execute(taskToDelete)).resolves.toBe(true);

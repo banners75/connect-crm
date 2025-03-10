@@ -29,17 +29,31 @@ export class SqlContactRepository implements IContactsRepository {
   }
 
   async findAll(): Promise<Contact[]> {
-    const result = this.prismaService.contact.findMany();
-    return result;
+    const result = await this.prismaService.contact.findMany();
+
+    const response = new Array<Contact>();
+    result.forEach((element) => {
+      const contact = new Contact();
+      contact.id = element.id;
+      contact.name = element.name;
+      contact.email = element.email;
+      contact.phone = element.phone;
+      contact.notes = element.notes || '';
+      contact.owner = element.owner;
+      response.push(contact);
+    });
+
+    return response;
   }
+
   find(id: number): Promise<Contact> {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.' + id);
   }
 
   async update(contact: Contact): Promise<Contact> {
     const id = contact.id;
 
-    return this.prismaService.contact.update({
+    const result = await this.prismaService.contact.update({
       where: {
         id,
       },
@@ -50,5 +64,15 @@ export class SqlContactRepository implements IContactsRepository {
         notes: contact.notes,
       },
     });
+
+    const response = new Contact();
+    response.id = result.id;
+    response.name = result.name;
+    response.email = result.email;
+    response.phone = result.phone;
+    response.notes = result.notes || '';
+    response.owner = result.owner;
+
+    return response;
   }
 }

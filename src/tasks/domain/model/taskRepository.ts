@@ -1,8 +1,8 @@
 import { Task } from './task';
 
 export interface ITaskRepository {
-  findAll(): Promise<Task[]>;
+  delete(task: Task): boolean | PromiseLike<boolean>;
   find(id: number): Promise<Task>;
-  delete(task: Task): Promise<boolean>;
+  findAll(): Promise<Task[]>;
   create(task: Task): Promise<Task>;
 }

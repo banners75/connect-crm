@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TasksController } from './tasks.controller';
-import { SqlTaskRepository } from './sql.taslRepository';
+import { SqlTaskRepository } from './sql.taskRepository';
 import { ListAllTasks } from '../domain/list-all-tasks/listAllTasks';
 import { CreateTask } from '../domain/create-task/createTask';
 import { PrismaService } from 'src/prisma.service';

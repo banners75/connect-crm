@@ -1,4 +1,3 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import { CreateTask } from './createTask';
 
 describe('CreateTask', () => {
@@ -11,7 +10,7 @@ describe('CreateTask', () => {
     findAll: jest.fn(),
   };
 
-  beforeEach(async () => {
+  beforeEach(() => {
     command = new CreateTask(mockTaskRepository);
   });
   it('should create and return a task', () => {

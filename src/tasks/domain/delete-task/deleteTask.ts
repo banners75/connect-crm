@@ -5,12 +5,12 @@ export class DeleteTask {
   constructor(private taskRepository: ITaskRepository) {}
 
   async execute(task: Task): Promise<boolean> {
-    var task = await this.taskRepository.find(task.id);
+    const result = await this.taskRepository.find(task.id);
 
-    if (task == null) {
+    if (result == null) {
       throw new Error('Task not found');
     }
 
-    return await this.taskRepository.delete(task);
+    return await this.taskRepository.delete(result);
   }
 }
