@@ -5,8 +5,8 @@ import { Contact } from '../domain/contact.entity';
 export class SqlContactRepository implements IContactsRepository {
   constructor(private prismaService: PrismaService) {}
 
-  create(contact: Contact): Promise<Contact> {
-    return this.prismaService.contact.create({
+  async create(contact: Contact): Promise<Contact> {
+    const result = await this.prismaService.contact.create({
       data: {
         name: contact.name,
         email: contact.email,
@@ -15,6 +15,16 @@ export class SqlContactRepository implements IContactsRepository {
         owner: contact.owner,
       },
     });
+
+    const response = new Contact();
+    response.id = result.id;
+    response.name = result.name;
+    response.email = result.email;
+    response.phone = result.phone;
+    response.notes = result.notes || '';
+    response.owner = result.owner;
+
+    return response;
   }
 
   async delete(id: number): Promise<boolean> {
