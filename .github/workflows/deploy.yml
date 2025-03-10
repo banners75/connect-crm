@@ -77,19 +77,33 @@ jobs:
           sarif_file: 'trivy-results.sarif'
 
   test:
-
+    needs: lint
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js 22.x
-      uses: actions/setup-node@v4
-      with:
-        node-version: 22.x
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Tests with Coverage
+        run: |
+          npx jest --ci --reporters=default --reporters=jest-junit --coverage
+        env:
+          JEST_JUNIT_OUTPUT: "test-results/junit.xml"
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: jest-test-results
+          path: test-results/junit.xml
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage
 
 
   publish:
