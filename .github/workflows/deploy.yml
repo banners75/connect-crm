@@ -7,7 +7,28 @@ on:
 
 jobs:
 
+  build:
+    name: Build NestJS App
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build NestJS App
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nestjs-build
+          path: dist
+
   lint:
+    needs: build
     name: Run ESLint & Prettier
     runs-on: ubuntu-latest
     permissions: write-all
@@ -49,6 +70,7 @@ jobs:
           fi
 
   scan:
+    needs: lint
     permissions:
       contents: read # for actions/checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
