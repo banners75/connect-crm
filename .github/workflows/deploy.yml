@@ -134,6 +134,13 @@ jobs:
           name: coverage-report
           path: coverage
 
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        with:
+          name: Jest Test Report
+          path: reports/jest-junit.xml
+          reporter: jest-junit
+
   publish:
     needs: test
     runs-on: ubuntu-latest
