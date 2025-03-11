@@ -45,7 +45,9 @@ jobs:
 
       - name: Run ESLint
         run: |
-          npx eslint '{src,apps,libs,test}/**/*.ts' . --format json --output-file eslint-report.json || echo '[]' > eslint-report.json
+          npx eslint '{src,apps,libs,test}/**/*.ts' . --format json > eslint-report.json || echo '[]' > eslint-report.json
+
+          # npx eslint '{src,apps,libs,test}/**/*.ts' . --format json --output-file eslint-report.json || echo '[]' > eslint-report.json
 
       - name: Upload ESLint report
         uses: actions/upload-artifact@v4
@@ -58,9 +60,13 @@ jobs:
         with:
           report-json: eslint-report.json
 
+      - name: Run Prettier Check
+        run: |
+          npx prettier --check './src/**/*.{js,ts}'
+
       - name: Fail if Linting Issues Found
         run: |
-          if [ -s eslint-report.json ] && grep -q '"severity": 2' eslint-report.json; then
+          if [ -s eslint-report.json ] && grep -q '"severity":2' eslint-report.json; then
             echo "❌ ESLint errors found!"
             exit 1
           else
