@@ -45,8 +45,7 @@ jobs:
 
       - name: Run ESLint
         run: |
-          npm run lint:json
-        continue-on-error: true
+          npm run lint:json || true
 
       - name: Upload ESLint report
         uses: actions/upload-artifact@v4
@@ -58,7 +57,6 @@ jobs:
         uses: ataylorme/eslint-annotate-action@v2
         with:
           report-json: eslint-report.json
-        continue-on-error: true
 
       - name: Fail if Linting Issues Found
         run: |
