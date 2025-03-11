@@ -154,7 +154,7 @@ jobs:
         uses: im-open/process-jest-test-results@v2.2.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          results-file: 'reports/jest-results.json'
+          results-file: 'reports/test-results.json'
 
   publish:
     needs: test
