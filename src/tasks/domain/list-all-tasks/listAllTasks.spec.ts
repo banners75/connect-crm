@@ -43,6 +43,8 @@ describe('TasksService', () => {
       output = result;
     });
 
+    let myvar;
+
     expect(output).toEqual(tasks);
   });
 
