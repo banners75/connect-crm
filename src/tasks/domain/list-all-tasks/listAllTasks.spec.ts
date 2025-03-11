@@ -37,7 +37,13 @@ describe('TasksService', () => {
 
     mockTaskRepository.findAll.mockReturnValue(tasks);
 
-    void expect(command.execute()).resolves.toEqual(tasks);
+    var output: Task[] = [];
+
+    command.execute().then((result) => {
+      output = result;
+    });
+
+    expect(output).toEqual(tasks);
   });
 
   it('should return an empty array of tasks when no tasks are returned from the repository', () => {

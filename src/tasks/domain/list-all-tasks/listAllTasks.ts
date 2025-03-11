@@ -6,6 +6,7 @@ export class ListAllTasks {
 
   async execute(): Promise<Task[]> {
     const tasks = this.taskRepository.findAll();
-    return [];
+    
+    return new Promise<Task[]>(() => new Array<Task>());
   }
 }
