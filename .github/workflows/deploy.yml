@@ -141,6 +141,14 @@ jobs:
           path: reports/jest-junit.xml
           reporter: jest-junit
 
+      - name: Process jest results with default
+        if: always()
+        # You may also reference just the major or major.minor version
+        uses: im-open/process-jest-test-results@v2.2.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          results-file: 'reports/jest-results.json
+
   publish:
     needs: test
     runs-on: ubuntu-latest
