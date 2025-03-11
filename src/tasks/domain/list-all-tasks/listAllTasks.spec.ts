@@ -39,9 +39,11 @@ describe('TasksService', () => {
 
     let output: Task[] = [];
 
-    command.execute().then((result) => {
+    void command.execute().then((result) => {
       output = result;
     });
+
+    let myvar;
 
     expect(output).toEqual(tasks);
   });
