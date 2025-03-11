@@ -45,7 +45,8 @@ jobs:
 
       - name: Run ESLint
         run: |
-          npx eslint '{src,apps,libs,test}/**/*.ts' --format json > eslint-report.json || true
+          npx eslint '{src,apps,libs,test}/**/*.ts' --format json > eslint-report.json || 0
+          cat eslint-report.json
 
       - name: Upload ESLint report
         uses: actions/upload-artifact@v4
