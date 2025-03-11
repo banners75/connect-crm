@@ -65,7 +65,12 @@ jobs:
 
       - name: Fail if Linting Issues Found
         run: |
-          if [ -s eslint-report.json ] && grep -q -a -o '"severity":2' eslint-report.json; then
+
+          if jq 'map(select(
+                (.messages | length > 0 and .severity == 2) 
+                or 
+                (.suppressedMessages | map(select(.severity == 2)) | length == 0)
+              )) | length > 0' eslint-report.json; then
             echo "❌ ESLint errors found!"
             exit 1
           else
