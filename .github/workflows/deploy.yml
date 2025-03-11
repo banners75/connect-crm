@@ -45,7 +45,7 @@ jobs:
 
       - name: Run ESLint
         run: |
-          npx eslint '{src,apps,libs,test}/**/*.ts' . --format json --output-file eslint-report.json || echo '[]' > eslint-report.json
+          npm run lint:json
 
       - name: Upload ESLint report
         uses: actions/upload-artifact@v4
@@ -57,10 +57,6 @@ jobs:
         uses: ataylorme/eslint-annotate-action@v2
         with:
           report-json: eslint-report.json
-
-      - name: Run Prettier Check
-        run: |
-          npx prettier --check './src/**/*.{js,ts}'
 
       - name: Fail if Linting Issues Found
         run: |

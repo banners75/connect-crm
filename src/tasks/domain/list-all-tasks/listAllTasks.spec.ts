@@ -39,7 +39,7 @@ describe('TasksService', () => {
 
     let output: Task[] = [];
 
-    void command.execute().then((result) => {
+    command.execute().then((result) => {
       output = result;
     });
 
