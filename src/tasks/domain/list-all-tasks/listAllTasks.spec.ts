@@ -37,9 +37,9 @@ describe('TasksService', () => {
 
     mockTaskRepository.findAll.mockReturnValue(tasks);
 
-    var output: Task[] = [];
+    let output: Task[] = [];
 
-    command.execute().then((result) => {
+    void command.execute().then((result) => {
       output = result;
     });
 
