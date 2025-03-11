@@ -45,7 +45,7 @@ jobs:
 
       - name: Run ESLint
         run: |
-          npx eslint '{src,apps,libs,test}/**/*.ts' --format json > eslint-report.json || 0
+          npx eslint '{src,apps,libs,test}/**/*.ts' --format json > eslint-report.json || exit 0
           cat eslint-report.json
 
       - name: Upload ESLint report
