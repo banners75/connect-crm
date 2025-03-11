@@ -66,13 +66,12 @@ jobs:
       - name: Fail if Linting Issues Found
         run: |
           if jq 'map(
-          select(
-              (.messages | map(select(.severity == 2)) | length > 0)
-              and
+            select(
+              (.messages | map(select(.severity == 2)) | length > 0) 
+              and 
               (.suppressedMessages | map(select(.severity == 2)) | length == 0)
-              )
-          ) | length > 0' eslint-report.json; then
-
+            )
+          ) | length > 0' eslint-report.json > /dev/null; then
             echo "❌ ESLint errors found!"
             exit 1
           else
