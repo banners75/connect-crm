@@ -143,14 +143,12 @@ jobs:
           name: coverage-report
           path: coverage
 
-      - name: Convert LCOV to Cobertura
-        run: npx lcov-cobertura coverage/lcov.info --output coverage/cobertura-coverage.xml
-
-      - name: Upload Coverage to GitHub Checks
-        uses: mikepenz/action-junit-report@v4
+      - name: Display LCOV Report
+        uses: romeovs/lcov-reporter-action@v0.2.16
         with:
-          report_paths: "coverage/cobertura-coverage.xml"
-          require_tests: false
+          lcov-file: ./coverage/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
   
       - name: Publish Test Results
         if: always()
