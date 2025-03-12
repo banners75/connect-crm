@@ -143,6 +143,12 @@ jobs:
           name: coverage-report
           path: coverage
 
+      - name: Publish Coverage Report
+        uses: vebr/jest-lcov-reporter@v0.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          lcov-file: coverage/lcov.info
+  
       - name: Publish Test Results
         if: always()
         uses: mikepenz/action-junit-report@v4
