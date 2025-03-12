@@ -136,32 +136,17 @@ jobs:
           name: jest-test-results
           path: reports/jest-junit.xml
 
-      - name: Upload Test Results Json
-        uses: actions/upload-artifact@v4
-        with:
-          name: jest-test-results-json
-          path: reports/test-results.json
-
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: coverage
 
-      - name: Test Report
-        uses: dorny/test-reporter@v1
+      - name: Publish Test Results
+        if: success() || failure()
+        uses: mikepenz/action-junit-report@v4
         with:
-          name: Jest Test Report
-          path: reports/jest-junit.xml
-          reporter: jest-junit
-
-      - name: Process jest results with default
-        if: always()
-        # You may also reference just the major or major.minor version
-        uses: im-open/process-jest-test-results@v2.2.1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          results-file: 'reports/test-results.json'
+          report_paths: "test-results/jest-junit.xml"
 
   publish:
     needs: test
