@@ -143,11 +143,10 @@ jobs:
           name: coverage-report
           path: coverage
 
-      - name: Publish Coverage Report in GitHub Checks
-        uses: mikepenz/action-junit-report@v4
+      - name: Publish Coverage Report
+        uses: irongut/CodeCoverageSummary@v1.2.0
         with:
-          report_paths: "coverage/cobertura-coverage.xml"
-          require_tests: false
+          filename: coverage/cobertura-coverage.xml
   
       - name: Publish Test Results
         if: always()
