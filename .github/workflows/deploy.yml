@@ -143,12 +143,14 @@ jobs:
           name: coverage-report
           path: coverage
 
-      - name: Publish Coverage Report in GitHub Checks
-        uses: dorny/test-reporter@v1
+      - name: Convert LCOV to Cobertura
+        run: npx lcov-to-cobertura-xml coverage/lcov.info --output coverage/cobertura-coverage.xml
+
+      - name: Upload Coverage to GitHub Checks
+        uses: mikepenz/action-junit-report@v4
         with:
-          name: Jest Coverage
-          path: coverage/lcov.info
-          reporter: lcov
+          report_paths: "coverage/cobertura-coverage.xml"
+          require_tests: false
   
       - name: Publish Test Results
         if: always()
