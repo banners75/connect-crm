@@ -9,6 +9,7 @@ module.exports = {
             }
         ]
     ],
+    coverageReporters: ['html', 'text', 'text-summary', 'cobertura'],
     "moduleFileExtensions": [
         "js",
         "json",

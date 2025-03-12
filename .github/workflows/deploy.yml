@@ -143,11 +143,11 @@ jobs:
           name: coverage-report
           path: coverage
 
-      - name: Display LCOV Report
-        uses: kefasjw/lcov-pull-request-report@v1
+      - name: Publish Coverage Report in GitHub Checks
+        uses: mikepenz/action-junit-report@v4
         with:
-          lcov-file: coverage/lcov.info
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          report_paths: "coverage/cobertura-coverage.xml"
+          require_tests: false
   
       - name: Publish Test Results
         if: always()
