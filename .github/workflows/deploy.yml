@@ -126,7 +126,7 @@ jobs:
       - name: Run Tests with Coverage
         run: |
           npm run test:cov
-          continue-on-error: true
+        continue-on-error: true
           
       - name: List files in the reports directory
         run: ls -al reports
