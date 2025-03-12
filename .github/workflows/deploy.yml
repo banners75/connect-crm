@@ -144,7 +144,7 @@ jobs:
           path: coverage
 
       - name: Convert LCOV to Cobertura
-        run: npx lcov-to-cobertura-xml coverage/lcov.info --output coverage/cobertura-coverage.xml
+        run: npx lcov-cobertura coverage/lcov.info --output coverage/cobertura-coverage.xml
 
       - name: Upload Coverage to GitHub Checks
         uses: mikepenz/action-junit-report@v4
