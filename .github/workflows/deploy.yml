@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nestjs-build
-          path: dist
+          path: /apps/backend/dist
 
   lint:
     needs: build
@@ -64,12 +64,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: eslint-report
-          path: eslint-report.json
+          path: apps/backend/eslint-report.json
 
       - name: Annotate ESLint Errors
         uses: ataylorme/eslint-annotate-action@v2
         with:
-          report-json: eslint-report.json
+          report-json: apps/backend/eslint-report.json
 
       - name: Run Prettier Check
         run: |
@@ -85,7 +85,7 @@ jobs:
               and
               (.suppressedMessages | map(select(.severity == 2)) | length == 0)
           )
-          ) | length > 0' eslint-report.json; then
+          ) | length > 0' apps/backend/eslint-report.json; then
 
             echo "❌ ESLint errors found!"
             exit 1
@@ -157,24 +157,24 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: jest-test-results
-          path: reports/jest-junit.xml
+          path: apps/backend/reports/jest-junit.xml
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: coverage
+          path: apps/backend/coverage
 
       - name: Publish Test Results
         if: always()
         uses: mikepenz/action-junit-report@v4
         with:
-          report_paths: "reports/jest-junit.xml"
+          report_paths: "apps/backend/reports/jest-junit.xml"
 
       - name: Code Coverage Summary Report
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
-          filename: 'coverage/cobertura-coverage.xml'
+          filename: 'apps/backend/coverage/cobertura-coverage.xml'
           badge: true
           format: 'markdown'
           output: 'both'
