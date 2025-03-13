@@ -5,7 +5,6 @@ import { SqlContactRepository } from './sql.contacts.repository';
 import { CustomLogger } from 'src/logging/CustomLogger';
 import { PrismaService } from 'src/prisma.service';
 
-
 @Module({
   imports: [],
   controllers: [ContactsController],
