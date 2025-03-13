@@ -1,6 +1,6 @@
-import { PrismaService } from 'src/prisma.service';
 import { IContactsRepository } from '../domain/contacts.repository';
 import { Contact } from '../domain/contact.entity';
+import { PrismaService } from 'src/prisma.service';
 
 export class SqlContactRepository implements IContactsRepository {
   constructor(private prismaService: PrismaService) {}

@@ -1,6 +1,5 @@
 import {
   Form,
-  Link,
   NavLink,
   Meta,
   Outlet,
@@ -92,7 +91,7 @@ export default function App() {
           <nav>
             {contacts.length ? (
               <ul>
-                {contacts.map((contact: { id: Key | null | undefined; first: any; last: any; favorite: any; }) => (
+                {contacts.map((contact: { id: Key | null | undefined; first: string; last: string; favorite: boolean; }) => (
                   <li key={contact.id}>
                     <NavLink
                       className={({ isActive, isPending }) =>
