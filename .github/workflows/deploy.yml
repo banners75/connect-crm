@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nestjs-build
-          path: /apps/backend/dist
+          path: apps/backend/dist
 
   lint:
     needs: build
@@ -212,6 +212,7 @@ jobs:
           ECR_REPOSITORY: connect-crm
           IMAGE_TAG: latest
         run: |
+          cd apps/backend
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
