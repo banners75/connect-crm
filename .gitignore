@@ -4,6 +4,9 @@
 /build
 /terraform/.terraform
 
+/connect-ui/node_modules
+/connect-ui/build
+
 # Logs
 logs
 *.log
