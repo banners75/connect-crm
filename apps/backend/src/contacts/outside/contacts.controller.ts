@@ -3,7 +3,6 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
   Logger,
@@ -57,7 +56,7 @@ export class ContactsController {
       !updateContactDto.name ||
       !updateContactDto.email ||
       !updateContactDto.phone ||
-      !updateContactDto.owner 
+      !updateContactDto.owner
     ) {
       throw new Error('invalid payload');
     }
@@ -67,9 +66,11 @@ export class ContactsController {
       name: updateContactDto.name,
       email: updateContactDto.email,
       phone: updateContactDto.phone,
-      notes: updateContactDto.notes? updateContactDto.notes : '',
+      notes: updateContactDto.notes ? updateContactDto.notes : '',
       owner: updateContactDto.owner,
-      favourite: updateContactDto.favourite? updateContactDto.favourite : false,
+      favourite: updateContactDto.favourite
+        ? updateContactDto.favourite
+        : false,
     };
 
     return this.contactsService.update(contact);

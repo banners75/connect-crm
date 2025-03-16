@@ -58,7 +58,6 @@ export class SqlContactRepository implements IContactsRepository {
   }
 
   async find(contactId: number): Promise<Contact> {
-
     const result = await this.prismaService.contact.findUnique({
       where: {
         id: contactId,
@@ -80,7 +79,7 @@ export class SqlContactRepository implements IContactsRepository {
     contact.notes = result.notes || '';
     contact.owner = result.owner;
     contact.favourite = result.favourite;
-    
+
     return contact;
   }
 
