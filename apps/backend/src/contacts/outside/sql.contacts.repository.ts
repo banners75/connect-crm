@@ -56,8 +56,30 @@ export class SqlContactRepository implements IContactsRepository {
     return response;
   }
 
-  find(id: number): Promise<Contact> {
-    throw new Error('Method not implemented.' + id);
+  async find(contactId: number): Promise<Contact> {
+    
+    const result = await this.prismaService.contact.findUnique({
+      where: {
+        id: contactId,
+      },
+    });
+
+    if (result === null) {
+      throw new Error('Contact not found');
+    }
+
+    const contact = new Contact();
+    if (!result) {
+      throw new Error('Contact not found');
+    }
+    contact.id = result.id;
+    contact.name = result.name;
+    contact.email = result.email;
+    contact.phone = result.phone;
+    contact.notes = result.notes || '';
+    contact.owner = result.owner;
+    
+    return contact;
   }
 
   async update(contact: Contact): Promise<Contact> {

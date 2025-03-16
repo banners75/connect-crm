@@ -62,16 +62,17 @@ const fakeContacts = {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Handful of helper functions to be called from route loaders and actions
-export async function getContacts(query?: string | null) {
-  await new Promise((resolve) => setTimeout(resolve, 500));
-  let contacts = await fakeContacts.getAll();
+export async function getContacts(token: string) {
 
-  if (query) {
-    contacts = matchSorter(contacts, query, {
-      keys: ["first", "last"],
-    });
-  }
-  return contacts.sort(sortBy("last", "createdAt"));
+  let contacts = await fetch("http://localhost:3000/contacts", {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`, // Send token in Authorization header
+      "Content-Type": "application/json",
+    },
+  });
+
+  return contacts.json();
 }
 
 export async function createEmptyContact() {
@@ -79,8 +80,16 @@ export async function createEmptyContact() {
   return contact;
 }
 
-export async function getContact(id: string) {
-  return fakeContacts.get(id);
+export async function getContact(id: string, token: string) {
+  let contact = await fetch(`http://localhost:3000/contacts/${id}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`, 
+      "Content-Type": "application/json",
+    },
+  });
+
+  return contact.json();
 }
 
 export async function updateContact(id: string, updates: ContactMutation) {

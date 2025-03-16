@@ -1,33 +1,20 @@
-import { Form, redirect, useFetcher, useLoaderData } from "@remix-run/react";
+import { Form, useFetcher, useLoaderData } from "@remix-run/react";
 import type { FunctionComponent } from "react";
 
 
-import { getContact, updateContact } from "~/contactsService";
+import { getContact, updateContact } from "../data";
 
 export const loader = async ({
-    params, request
+    params,
 }: LoaderFunctionArgs) => {
     console.log('loading contact');
-
-    const session = await getSession(request.headers.get("Cookie"));
-    const token = session.get("token");
-    console.log(token);
-
-    if (!token) {
-        // If no token is found, redirect the user to the login page
-        console.log('redirecting to login');
-        return redirect("/login");
-    }
-
     invariant(params.contactId, "Missing contactId param");
-    const contact = await getContact(params.contactId, token);
+    const contact = await getContact(params.contactId);
 
     if (!contact) {
         console.log('contact not found');
         throw new Response("Not Found", { status: 404 });
     }
-
-    console.log(contact);
 
     return Response.json({ contact });
 };
@@ -35,19 +22,18 @@ export const loader = async ({
 export const action = async ({
     params,
     request,
-}: ActionFunctionArgs) => {
+  }: ActionFunctionArgs) => {
     invariant(params.contactId, "Missing contactId param");
     const formData = await request.formData();
     return updateContact(params.contactId, {
-        favorite: formData.get("favorite") === "true",
+      favorite: formData.get("favorite") === "true",
     });
-};
+  };
 
 
 import type { ContactRecord } from "../data";
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import invariant from "tiny-invariant";
-import { getSession } from "~/sessions";
 
 export default function Contact() {
 
@@ -57,10 +43,18 @@ export default function Contact() {
     return (
         <div id="contact">
             <div>
+                <img
+                    alt={`${contact.first} ${contact.last} avatar`}
+                    key={contact.avatar}
+                    src={contact.avatar}
+                />
+            </div>
+
+            <div>
                 <h1>
-                    {contact.name ? (
+                    {contact.first || contact.last ? (
                         <>
-                            {contact.name}
+                            {contact.first} {contact.last}
                         </>
                     ) : (
                         <i>No Name</i>
@@ -68,8 +62,16 @@ export default function Contact() {
                     <Favorite contact={contact} />
                 </h1>
 
-                {contact.email ? <p>{contact.email}</p> : null}
-                {contact.phone ? <p>{contact.phone}</p> : null}
+                {contact.twitter ? (
+                    <p>
+                        <a
+                            href={`https://twitter.com/${contact.twitter}`}
+                        >
+                            {contact.twitter}
+                        </a>
+                    </p>
+                ) : null}
+
                 {contact.notes ? <p>{contact.notes}</p> : null}
 
                 <div>
@@ -102,8 +104,8 @@ const Favorite: FunctionComponent<{
 }> = ({ contact }) => {
     const fetcher = useFetcher();
     const favorite = fetcher.formData
-        ? fetcher.formData.get("favorite") === "true"
-        : contact.favorite;
+    ? fetcher.formData.get("favorite") === "true"
+    : contact.favorite;
 
     return (
         <fetcher.Form method="post">

@@ -19,7 +19,7 @@ export class ContactsService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} contact`;
+    return this.contactsRepository.find(id);
   }
 
   update(contact: Contact) {
