@@ -1,13 +1,11 @@
 import {
   Form,
   NavLink,
-  Meta,
   Outlet,
   redirect,
   Scripts,
   ScrollRestoration,
   useLoaderData,
-  Links,
   useNavigation,
   useSubmit,
 } from "@remix-run/react";
@@ -16,33 +14,23 @@ import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { getContacts, createEmptyContact } from "~/contactsService";
 import { Key, useEffect } from "react";
 import appStylesHref from "~/app.css?url";
-import { getSession } from "~/sessions";
+import { requireUserSession } from "~/sessions";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: appStylesHref },];
 
-export const loader = async ({
-  request,
-}: LoaderFunctionArgs) => {
+export const loader = async ({request}: LoaderFunctionArgs) => {
 
-  const session = await getSession(request.headers.get("Cookie"));
-  const token = session.get("token");
-  console.log(token);
-
-  if (!token) {
-    console.log('redirecting to login');
-    return redirect("/login");
-  }
-
-  const contacts = await getContacts(token);
-
-  console.log(contacts);
+  const session = await requireUserSession(request);
+  const url = new URL(request.url);
+  const q = url.searchParams.get("q");
+  const contacts = await getContacts(session.get("token"), q);
 
   return Response.json({ contacts });
 };
 
 export const action = async () => {
-  // const contact = await createEmptyContact();
-  // return redirect(`/${contact.id}/edit`);
+  const contact = await createEmptyContact();
+  return redirect(`/${contact.id}/edit`);
 };
 
 export default function App() {
@@ -50,11 +38,7 @@ export default function App() {
   const { contacts, q } = useLoaderData<typeof loader>();
   const navigation = useNavigation();
   const submit = useSubmit();
-  const searching =
-    navigation.location &&
-    new URLSearchParams(navigation.location.search).has(
-      "q"
-    );
+  const searching = navigation.location && new URLSearchParams(navigation.location.search).has("q");
 
   useEffect(() => {
     const searchField = document.getElementById("q");

@@ -1,5 +1,5 @@
 // app/sessions.ts
-import { createCookieSessionStorage } from "@remix-run/node"; // or cloudflare/deno
+import { createCookieSessionStorage, redirect } from "@remix-run/node"; // or cloudflare/deno
 
 type SessionData = {
   token: string;
@@ -33,3 +33,14 @@ const { getSession, commitSession, destroySession } =
   );
 
 export { getSession, commitSession, destroySession };
+
+export async function requireUserSession(request: Request) {
+  const cookie = request.headers.get("Cookie");
+  const session = await getSession(cookie);
+
+  if (!session.has("token")) {
+    throw redirect("/login");
+  }
+
+  return session;
+}

@@ -6,6 +6,7 @@ import { matchSorter } from "match-sorter";
 // @ts-expect-error - no types, but it's a tiny function
 import sortBy from "sort-by";
 import invariant from "tiny-invariant";
+import Contact from "./routes/contacts.$contactId";
 
 type ContactMutation = {
   id: string;
@@ -59,11 +60,9 @@ export type ContactRecord = ContactMutation & {
   // },
 // };
 
-////////////////////////////////////////////////////////////////////////////////
-// Handful of helper functions to be called from route loaders and actions
-export async function getContacts(token: string) {
+export async function getContacts(token?: string, query?: string | null) {
 
-  let contacts = await fetch("http://localhost:3000/contacts", {
+  let response = await fetch("http://localhost:3000/contacts", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`, // Send token in Authorization header
@@ -71,15 +70,30 @@ export async function getContacts(token: string) {
     },
   });
 
-  return contacts.json();
+  if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error("Unauthorized. Please check your token.");
+    }
+    throw new Error(`Failed to fetch contacts: ${response.statusText}`);
+  }
+
+  let contacts = await response.json();
+
+  if (query) {
+    contacts = matchSorter(contacts, query, {
+      keys: ["name"],
+    });
+  }
+
+  return contacts;
 }
 
 export async function createEmptyContact() {
-  // const contact = await fakeContacts.create({});
-  // return contact;
+  const newContact = { id: "", name: "", email: "", phone: "", notes: "", owner: "", favourite: false };
+  return newContact;
 }
 
-export async function getContact(id: string, token: string) {
+export async function getContact(id: string, token?: string) {
   let contact = await fetch(`http://localhost:3000/contacts/${id}`, {
     method: "GET",
     headers: {
@@ -91,7 +105,7 @@ export async function getContact(id: string, token: string) {
   return contact.json();
 }
 
-export async function updateContact(id: string, updates: ContactMutation, token: string) {
+export async function updateContact(id: string, updates: ContactMutation, token?: string) {
 
   let contact = await fetch(`http://localhost:3000/contacts/${id}`, {
     method: "PUT",
