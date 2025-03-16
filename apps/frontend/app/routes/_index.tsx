@@ -1,8 +1,16 @@
-import { Link } from "@remix-run/react";
+import { LoaderFunctionArgs } from "@remix-run/node";
+import { Form, Link } from "@remix-run/react";
+import { requireUserSession } from "~/sessions";
+
+export const loader = async ({request,}: LoaderFunctionArgs) => {
+  const session = await requireUserSession(request);
+
+  return Response.json({});
+}
 
 export default function Index() {
-    return (
-      <div>
+  return (
+    <div>
       <p id="index-page">
         This is a demo for Remix..
         <br />
@@ -13,12 +21,14 @@ export default function Index() {
         <Link to={"login"}>Login</Link>
       </p>
       <p>
-      <Link to={"contacts"}>Contacts</Link>
+        <Link to={"contacts"}>Contacts</Link>
       </p>
       <p>
-      <Link to={"contactsExample"}>Contacts Example</Link>
+        <Link to={"contactsExample"}>Contacts Example</Link>
       </p>
-      </div>
-    );
-  }
-  
+      <Form method="post" action="/logout">
+        <button type="submit">Logout</button>
+      </Form>
+    </div>
+  );
+}

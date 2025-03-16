@@ -16,13 +16,14 @@ import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { Key, useEffect } from "react";
 import appStylesHref from "~/app.css?url";
 import { createEmptyContact, getContacts } from "~/data";
+import { requireUserSession } from "~/sessions";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: appStylesHref },];
 
-export const loader = async ({
-  request,
-}: LoaderFunctionArgs) => {
+export const loader = async ({request,}: LoaderFunctionArgs) => {
 
+  const session = await requireUserSession(request);
+  
   const url = new URL(request.url);
   const q = url.searchParams.get("q");
   const contacts = await getContacts(q);

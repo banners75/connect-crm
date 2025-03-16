@@ -6,6 +6,7 @@ import {
 
 import type { LinksFunction } from "@remix-run/node";
 import appStylesHref from "./app.css?url";
+import Navbar from "./components/Navbar";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: appStylesHref },];
 
@@ -20,6 +21,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+          <Navbar />
           <Outlet />
       </body> 
     </html>

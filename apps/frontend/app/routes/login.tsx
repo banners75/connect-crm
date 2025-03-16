@@ -13,11 +13,6 @@ export async function loader({ request }: LoaderFunctionArgs) {
     request.headers.get("Cookie")
   );
 
-  if (session.has("token")) {
-    // Redirect to the home page if they are already signed in.
-    return redirect("/");
-  }
-
   const data = { error: session.get("error") };
 
   return Response.json(data, {

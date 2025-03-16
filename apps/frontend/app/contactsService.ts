@@ -7,6 +7,8 @@ import { matchSorter } from "match-sorter";
 import sortBy from "sort-by";
 import invariant from "tiny-invariant";
 import Contact from "./routes/contacts.$contactId";
+import { redirect } from "@remix-run/react";
+import { destroySession, getSession } from "./sessions";
 
 type ContactMutation = {
   id: string;
@@ -65,14 +67,14 @@ export async function getContacts(token?: string, query?: string | null) {
   let response = await fetch("http://localhost:3000/contacts", {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`, // Send token in Authorization header
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
 
   if (!response.ok) {
     if (response.status === 401) {
-      throw new Error("Unauthorized. Please check your token.");
+      throw redirect("/logout")
     }
     throw new Error(`Failed to fetch contacts: ${response.statusText}`);
   }
