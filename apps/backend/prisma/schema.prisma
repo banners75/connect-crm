@@ -28,6 +28,7 @@ model Contact {
   notes  String?
   ownedBy User @relation(fields: [owner], references: [username])
   owner String
+  favourite Boolean @default(false)
 }
 
 model User {

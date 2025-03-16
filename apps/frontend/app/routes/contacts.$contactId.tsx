@@ -1,8 +1,9 @@
 import { Form, redirect, useFetcher, useLoaderData } from "@remix-run/react";
 import type { FunctionComponent } from "react";
-
-
-import { getContact, updateContact } from "~/contactsService";
+import { getContact, updateContact, ContactRecord } from "~/contactsService";
+import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
+import invariant from "tiny-invariant";
+import { getSession } from "~/sessions";
 
 export const loader = async ({
     params, request
@@ -12,7 +13,7 @@ export const loader = async ({
     const session = await getSession(request.headers.get("Cookie"));
     const token = session.get("token");
     console.log(token);
-
+;
     if (!token) {
         // If no token is found, redirect the user to the login page
         console.log('redirecting to login');
@@ -36,18 +37,37 @@ export const action = async ({
     params,
     request,
 }: ActionFunctionArgs) => {
+
+    const session = await getSession(request.headers.get("Cookie"));
+    const token = session.get("token");
+    console.log(token);
+;
+    if (!token) {
+        // If no token is found, redirect the user to the login page
+        console.log('redirecting to login');
+        return redirect("/login");
+    }
+
     invariant(params.contactId, "Missing contactId param");
+
+    const contact = await getContact(params.contactId, token);
+
+    if (!contact) {
+        console.log('contact not found');
+        throw new Response("Not Found", { status: 404 });
+    }
+
     const formData = await request.formData();
     return updateContact(params.contactId, {
-        favorite: formData.get("favorite") === "true",
-    });
+        id: contact.id,
+        name: contact.name,
+        email: contact.email,
+        phone: contact.phone,
+        notes: contact.notes,
+        owner: contact.owner,
+        favourite: formData.get("favourite") === "true",
+    }, token);
 };
-
-
-import type { ContactRecord } from "../data";
-import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
-import invariant from "tiny-invariant";
-import { getSession } from "~/sessions";
 
 export default function Contact() {
 
@@ -98,25 +118,25 @@ export default function Contact() {
 }
 
 const Favorite: FunctionComponent<{
-    contact: Pick<ContactRecord, "favorite">;
+    contact: Pick<ContactRecord, "favourite">;
 }> = ({ contact }) => {
     const fetcher = useFetcher();
-    const favorite = fetcher.formData
-        ? fetcher.formData.get("favorite") === "true"
-        : contact.favorite;
+    const favourite = fetcher.formData
+        ? fetcher.formData.get("favourite") === "true"
+        : contact.favourite;
 
     return (
         <fetcher.Form method="post">
             <button
                 aria-label={
-                    favorite
-                        ? "Remove from favorites"
-                        : "Add to favorites"
+                    favourite
+                        ? "Remove from favourites"
+                        : "Add to favourites"
                 }
-                name="favorite"
-                value={favorite ? "false" : "true"}
+                name="favourite"
+                value={favourite ? "false" : "true"}
             >
-                {favorite ? "★" : "☆"}
+                {favourite ? "★" : "☆"}
             </button>
         </fetcher.Form>
     );

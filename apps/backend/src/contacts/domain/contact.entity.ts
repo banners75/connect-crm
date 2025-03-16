@@ -5,4 +5,5 @@ export class Contact {
   phone: string;
   notes: string;
   owner: string;
+  favourite: boolean;
 }

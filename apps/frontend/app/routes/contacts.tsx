@@ -41,8 +41,8 @@ export const loader = async ({
 };
 
 export const action = async () => {
-  const contact = await createEmptyContact();
-  return redirect(`/${contact.id}/edit`);
+  // const contact = await createEmptyContact();
+  // return redirect(`/${contact.id}/edit`);
 };
 
 export default function App() {
@@ -96,7 +96,7 @@ export default function App() {
         <nav>
           {contacts.length ? (
             <ul>
-              {contacts.map((contact: { id: Key | null | undefined; name: string; favorite: boolean; }) => (
+              {contacts.map((contact: { id: Key | null | undefined; name: string; favourite: boolean; }) => (
                 <li key={contact.id}>
                   <NavLink
                     className={({ isActive, isPending }) =>
@@ -115,7 +115,7 @@ export default function App() {
                     ) : (
                       <i>No Name</i>
                     )}{" "}
-                    {contact.favorite ? (
+                    {contact.favourite ? (
                       <span>★</span>
                     ) : null}
                   </NavLink>

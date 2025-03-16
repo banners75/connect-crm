@@ -8,6 +8,7 @@ import {
   Delete,
   Logger,
   Req,
+  Put,
 } from '@nestjs/common';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
@@ -48,18 +49,17 @@ export class ContactsController {
     return this.contactsService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Put(':id')
   update(@Param('id') id: string, @Body() updateContactDto: UpdateContactDto) {
     //TODO: Add validation properly
     if (
-      !updateContactDto.id ||
+      !id ||
       !updateContactDto.name ||
       !updateContactDto.email ||
       !updateContactDto.phone ||
-      !updateContactDto.notes ||
-      !updateContactDto.owner
+      !updateContactDto.owner 
     ) {
-      throw new Error('id is required');
+      throw new Error('invalid payload');
     }
 
     const contact = {
@@ -67,8 +67,9 @@ export class ContactsController {
       name: updateContactDto.name,
       email: updateContactDto.email,
       phone: updateContactDto.phone,
-      notes: updateContactDto.notes,
+      notes: updateContactDto.notes? updateContactDto.notes : '',
       owner: updateContactDto.owner,
+      favourite: updateContactDto.favourite? updateContactDto.favourite : false,
     };
 
     return this.contactsService.update(contact);
