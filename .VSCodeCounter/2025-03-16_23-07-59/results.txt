@@ -1,0 +1,170 @@
+Date : 2025-03-16 23:07:59
+Directory : /Users/paulbanfield/workspace/connect-crm
+Total : 88 files,  28172 codes, 192 comments, 588 blanks, all 28952 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          8 |     24,883 |          0 |          8 |     24,891 |
+| TypeScript         |         47 |      1,454 |         62 |        270 |      1,786 |
+| TypeScript JSX     |         11 |        693 |          1 |        105 |        799 |
+| CSS                |          1 |        378 |          3 |         58 |        439 |
+| YAML               |          2 |        218 |         58 |         54 |        330 |
+| JavaScript         |          3 |        130 |         11 |          7 |        148 |
+| Terraform          |          2 |        128 |         12 |         16 |        156 |
+| MS SQL             |          7 |        104 |         30 |          8 |        142 |
+| Markdown           |          2 |         92 |          2 |         45 |        139 |
+| JSON with Comments |          2 |         50 |          1 |          3 |         54 |
+| Prisma             |          1 |         28 |          4 |          6 |         38 |
+| Docker             |          1 |          9 |          8 |          8 |         25 |
+| Ignore             |          1 |          5 |          0 |          0 |          5 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                  | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                     |         88 |     28,172 |        192 |        588 |     28,952 |
+| . (Files)                                                                                                             |          1 |         69 |          2 |         29 |        100 |
+| .github                                                                                                               |          2 |        218 |         58 |         54 |        330 |
+| .github/workflows                                                                                                     |          2 |        218 |         58 |         54 |        330 |
+| apps                                                                                                                  |         82 |     27,748 |        120 |        488 |     28,356 |
+| apps/backend                                                                                                          |         61 |     13,526 |         51 |        246 |     13,823 |
+| apps/backend (Files)                                                                                                  |          9 |     12,341 |          9 |         14 |     12,364 |
+| apps/backend/prisma                                                                                                   |          8 |        132 |         34 |         14 |        180 |
+| apps/backend/prisma (Files)                                                                                           |          1 |         28 |          4 |          6 |         38 |
+| apps/backend/prisma/migrations                                                                                        |          7 |        104 |         30 |          8 |        142 |
+| apps/backend/prisma/migrations/20250303224130_init                                                                    |          1 |          6 |          1 |          1 |          8 |
+| apps/backend/prisma/migrations/20250303225537_init                                                                    |          1 |         13 |          1 |          1 |         15 |
+| apps/backend/prisma/migrations/20250304223428_x                                                                       |          1 |          7 |          1 |          1 |          9 |
+| apps/backend/prisma/migrations/20250308215540_init                                                                    |          1 |         21 |          8 |          2 |         31 |
+| apps/backend/prisma/migrations/20250308223052_init                                                                    |          1 |         24 |         10 |          1 |         35 |
+| apps/backend/prisma/migrations/20250308231717_init                                                                    |          1 |         16 |          8 |          1 |         25 |
+| apps/backend/prisma/migrations/20250316144027_favourite_added                                                         |          1 |         17 |          1 |          1 |         19 |
+| apps/backend/src                                                                                                      |         42 |      1,023 |          8 |        212 |      1,243 |
+| apps/backend/src (Files)                                                                                              |          3 |         47 |          0 |          9 |         56 |
+| apps/backend/src/auth                                                                                                 |         11 |        290 |          4 |         58 |        352 |
+| apps/backend/src/auth/domain                                                                                          |          6 |        140 |          0 |         36 |        176 |
+| apps/backend/src/auth/domain/login                                                                                    |          2 |         94 |          0 |         21 |        115 |
+| apps/backend/src/auth/domain/logout                                                                                   |          2 |         17 |          0 |          7 |         24 |
+| apps/backend/src/auth/domain/register                                                                                 |          2 |         29 |          0 |          8 |         37 |
+| apps/backend/src/auth/outside                                                                                         |          5 |        150 |          4 |         22 |        176 |
+| apps/backend/src/contacts                                                                                             |         10 |        286 |          1 |         56 |        343 |
+| apps/backend/src/contacts/domain                                                                                      |          4 |         67 |          0 |         16 |         83 |
+| apps/backend/src/contacts/outside                                                                                     |          6 |        219 |          1 |         40 |        260 |
+| apps/backend/src/contacts/outside (Files)                                                                             |          4 |        206 |          1 |         37 |        244 |
+| apps/backend/src/contacts/outside/dto                                                                                 |          2 |         13 |          0 |          3 |         16 |
+| apps/backend/src/logging                                                                                              |          2 |         27 |          0 |          4 |         31 |
+| apps/backend/src/tasks                                                                                                |         13 |        315 |          2 |         70 |        387 |
+| apps/backend/src/tasks/domain                                                                                         |          8 |        150 |          2 |         43 |        195 |
+| apps/backend/src/tasks/domain/create-task                                                                             |          2 |         40 |          0 |         12 |         52 |
+| apps/backend/src/tasks/domain/delete-task                                                                             |          2 |         48 |          1 |         14 |         63 |
+| apps/backend/src/tasks/domain/list-all-tasks                                                                          |          2 |         49 |          1 |         14 |         64 |
+| apps/backend/src/tasks/domain/model                                                                                   |          2 |         13 |          0 |          3 |         16 |
+| apps/backend/src/tasks/outside                                                                                        |          5 |        165 |          0 |         27 |        192 |
+| apps/backend/src/user                                                                                                 |          3 |         58 |          1 |         15 |         74 |
+| apps/backend/test                                                                                                     |          2 |         30 |          0 |          6 |         36 |
+| apps/frontend                                                                                                         |         21 |     14,222 |         69 |        242 |     14,533 |
+| apps/frontend (Files)                                                                                                 |          6 |     12,752 |         11 |         28 |     12,791 |
+| apps/frontend/app                                                                                                     |         15 |      1,470 |         58 |        214 |      1,742 |
+| apps/frontend/app (Files)                                                                                             |          5 |        802 |         57 |        114 |        973 |
+| apps/frontend/app/components                                                                                          |          1 |         21 |          1 |          4 |         26 |
+| apps/frontend/app/routes                                                                                              |          9 |        647 |          0 |         96 |        743 |
+| terraform                                                                                                             |          3 |        137 |         12 |         17 |        166 |
++-----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                                              | language           | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /Users/paulbanfield/workspace/connect-crm/.github/workflows/codeql.yml                                                | YAML               |         44 |         44 |         11 |         99 |
+| /Users/paulbanfield/workspace/connect-crm/.github/workflows/deploy.yml                                                | YAML               |        174 |         14 |         43 |        231 |
+| /Users/paulbanfield/workspace/connect-crm/README.md                                                                   | Markdown           |         69 |          2 |         29 |        100 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/.dockerignore                                                  | Ignore             |          5 |          0 |          0 |          5 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/Dockerfile                                                     | Docker             |          9 |          8 |          8 |         25 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/eslint.config.mjs                                              | JavaScript         |         33 |          1 |          1 |         35 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/jest.config.js                                                 | JavaScript         |         28 |          0 |          0 |         28 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/nest-cli.json                                                  | JSON               |          8 |          0 |          1 |          9 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/package-lock.json                                              | JSON               |     12,170 |          0 |          1 |     12,171 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/package.json                                                   | JSON               |         63 |          0 |          1 |         64 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250303224130_init/migration.sql            | MS SQL             |          6 |          1 |          1 |          8 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250303225537_init/migration.sql            | MS SQL             |         13 |          1 |          1 |         15 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250304223428_x/migration.sql               | MS SQL             |          7 |          1 |          1 |          9 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250308215540_init/migration.sql            | MS SQL             |         21 |          8 |          2 |         31 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250308223052_init/migration.sql            | MS SQL             |         24 |         10 |          1 |         35 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250308231717_init/migration.sql            | MS SQL             |         16 |          8 |          1 |         25 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250316144027_favourite_added/migration.sql | MS SQL             |         17 |          1 |          1 |         19 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/schema.prisma                                           | Prisma             |         28 |          4 |          6 |         38 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/app.module.ts                                              | TypeScript         |         19 |          0 |          2 |         21 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/login/login.service.spec.ts                    | TypeScript         |         67 |          0 |         14 |         81 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/login/login.service.ts                         | TypeScript         |         27 |          0 |          7 |         34 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/logout/logout.service.spec.ts                  | TypeScript         |         14 |          0 |          5 |         19 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/logout/logout.service.ts                       | TypeScript         |          3 |          0 |          2 |          5 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/register/register.service.spec.ts              | TypeScript         |         18 |          0 |          5 |         23 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/register/register.service.ts                   | TypeScript         |         11 |          0 |          3 |         14 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/outside/auth.controller.spec.ts                       | TypeScript         |         28 |          0 |          5 |         33 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/outside/auth.controller.ts                            | TypeScript         |         36 |          0 |          4 |         40 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/outside/auth.guard.ts                                 | TypeScript         |         44 |          4 |          7 |         55 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/outside/auth.module.ts                                | TypeScript         |         35 |          0 |          3 |         38 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/outside/constants.ts                                  | TypeScript         |          7 |          0 |          3 |         10 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/domain/contact.entity.ts                          | TypeScript         |          9 |          0 |          1 |         10 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/domain/contacts.repository.ts                     | TypeScript         |          8 |          0 |          2 |         10 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/domain/contacts.service.spec.ts                   | TypeScript         |         24 |          0 |          6 |         30 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/domain/contacts.service.ts                        | TypeScript         |         26 |          0 |          7 |         33 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/contacts.controller.spec.ts               | TypeScript         |         16 |          0 |          5 |         21 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/contacts.controller.ts                    | TypeScript         |         70 |          1 |         13 |         84 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/contacts.module.ts                        | TypeScript         |         22 |          0 |          2 |         24 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/dto/create-contact.dto.ts                 | TypeScript         |          7 |          0 |          1 |          8 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/dto/update-contact.dto.ts                 | TypeScript         |          6 |          0 |          2 |          8 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/sql.contacts.repository.ts                | TypeScript         |         98 |          0 |         17 |        115 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/logging/CustomLogger.ts                                    | TypeScript         |         20 |          0 |          3 |         23 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/logging/logger.ts                                          | TypeScript         |          7 |          0 |          1 |          8 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/main.ts                                                    | TypeScript         |         20 |          0 |          5 |         25 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/prisma.service.ts                                          | TypeScript         |          8 |          0 |          2 |         10 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/create-task/createTask.spec.ts                | TypeScript         |         27 |          0 |          7 |         34 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/create-task/createTask.ts                     | TypeScript         |         13 |          0 |          5 |         18 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/delete-task/deleteTask.spec.ts                | TypeScript         |         36 |          1 |          9 |         46 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/delete-task/deleteTask.ts                     | TypeScript         |         12 |          0 |          5 |         17 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/list-all-tasks/listAllTasks.spec.ts           | TypeScript         |         40 |          0 |         11 |         51 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/list-all-tasks/listAllTasks.ts                | TypeScript         |          9 |          1 |          3 |         13 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/model/task.ts                                 | TypeScript         |          6 |          0 |          1 |          7 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/model/taskRepository.ts                       | TypeScript         |          7 |          0 |          2 |          9 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/outside/createTaskDto.ts                             | TypeScript         |          4 |          0 |          1 |          5 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/outside/sql.taskRepository.ts                        | TypeScript         |         63 |          0 |         10 |         73 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/outside/tasks.controller.spec.ts                     | TypeScript         |         50 |          0 |         10 |         60 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/outside/tasks.controller.ts                          | TypeScript         |         28 |          0 |          4 |         32 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/outside/tasks.module.ts                              | TypeScript         |         20 |          0 |          2 |         22 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/user/user.module.ts                                        | TypeScript         |          8 |          0 |          2 |         10 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/user/user.service.spec.ts                                  | TypeScript         |         15 |          0 |          5 |         20 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/src/user/user.service.ts                                       | TypeScript         |         35 |          1 |          8 |         44 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/test/app.e2e-spec.ts                                           | TypeScript         |         21 |          0 |          5 |         26 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/test/jest-e2e.json                                             | JSON               |          9 |          0 |          1 |         10 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/tsconfig.build.json                                            | JSON               |          4 |          0 |          1 |          5 |
+| /Users/paulbanfield/workspace/connect-crm/apps/backend/tsconfig.json                                                  | JSON with Comments |         21 |          0 |          1 |         22 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/.eslintrc.cjs                                                 | JavaScript         |         69 |         10 |          6 |         85 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/README.md                                                     | Markdown           |         23 |          0 |         16 |         39 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/app.css                                                   | CSS                |        378 |          3 |         58 |        439 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/components/Navbar.tsx                                     | TypeScript JSX     |         21 |          1 |          4 |         26 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/contactsService.ts                                        | TypeScript         |         77 |         37 |         25 |        139 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/data.ts                                                   | TypeScript         |        292 |          9 |         17 |        318 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/root.tsx                                                  | TypeScript JSX     |         25 |          0 |          5 |         30 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/_index.tsx                                         | TypeScript JSX     |         31 |          0 |          4 |         35 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contacts.$contactId.tsx                            | TypeScript JSX     |         99 |          0 |         17 |        116 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contacts.tsx                                       | TypeScript JSX     |        112 |          0 |         13 |        125 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contactsExample.$contactId.tsx                     | TypeScript JSX     |        106 |          0 |         20 |        126 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contactsExample.$contactId_.destroy.tsx            | TypeScript JSX     |         11 |          0 |          3 |         14 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contactsExample.$contactId_.edit.tsx               | TypeScript JSX     |         80 |          0 |          6 |         86 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contactsExample.tsx                                | TypeScript JSX     |        118 |          0 |         13 |        131 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/login.tsx                                          | TypeScript JSX     |         79 |          0 |         18 |         97 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/logout.tsx                                         | TypeScript JSX     |         11 |          0 |          2 |         13 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/app/sessions.ts                                               | TypeScript         |         30 |          8 |          9 |         47 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/package-lock.json                                             | JSON               |     12,577 |          0 |          1 |     12,578 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/package.json                                                  | JSON               |         43 |          0 |          1 |         44 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/tsconfig.json                                                 | JSON with Comments |         29 |          1 |          2 |         32 |
+| /Users/paulbanfield/workspace/connect-crm/apps/frontend/vite.config.ts                                                | TypeScript         |         11 |          0 |          2 |         13 |
+| /Users/paulbanfield/workspace/connect-crm/terraform/.terraform.lock.hcl                                               | Terraform          |         21 |          2 |          2 |         25 |
+| /Users/paulbanfield/workspace/connect-crm/terraform/main.tf                                                           | Terraform          |        107 |         10 |         14 |        131 |
+| /Users/paulbanfield/workspace/connect-crm/terraform/terraform.tfstate                                                 | JSON               |          9 |          0 |          1 |         10 |
+| Total                                                                                                                 |                    |     28,172 |        192 |        588 |     28,952 |
++-----------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

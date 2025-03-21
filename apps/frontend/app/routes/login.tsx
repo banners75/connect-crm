@@ -65,31 +65,32 @@ export default function LoginPage() {
   const actionData = useActionData<ActionData>();
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div style={{paddingTop: "20px", paddingLeft: "30px" }}>
       {actionData?.error && (
         <p>{actionData.error}</p>
       )}
       <Form method="post">
-        <div>
-          <label>Username</label>
-          <input
+        <div style={{ marginBottom: "10px" }}>
+          <label style={{display: "inline-block", width: "80px"}}>Username</label>
+          <input 
             type="text"
             name="username"
             required
           />
         </div>
         <div>
-          <label>Password</label>
+          <label style={{display: "inline-block", width: "80px"}}>Password</label>
           <input
             type="password"
             name="password"
             required
           />
         </div>
+        <div style={{marginTop: "10px", textAlign: "right"}}>
         <button type="submit">
           Login
         </button>
+        </div>
       </Form>
     </div>
   );

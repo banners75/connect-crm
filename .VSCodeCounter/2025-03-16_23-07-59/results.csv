@@ -1,0 +1,90 @@
+"filename", "language", "TypeScript", "JSON", "JSON with Comments", "JavaScript", "Prisma", "Docker", "Ignore", "CSS", "TypeScript JSX", "MS SQL", "Markdown", "Terraform", "YAML", "comment", "blank", "total"
+"/Users/paulbanfield/workspace/connect-crm/.github/workflows/codeql.yml", "YAML", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 44, 44, 11, 99
+"/Users/paulbanfield/workspace/connect-crm/.github/workflows/deploy.yml", "YAML", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 174, 14, 43, 231
+"/Users/paulbanfield/workspace/connect-crm/README.md", "Markdown", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 69, 0, 0, 2, 29, 100
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/.dockerignore", "Ignore", 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/Dockerfile", "Docker", 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 8, 8, 25
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/eslint.config.mjs", "JavaScript", 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 35
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/jest.config.js", "JavaScript", 0, 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 28
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/nest-cli.json", "JSON", 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/package-lock.json", "JSON", 0, 12170, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 12171
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/package.json", "JSON", 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 64
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250303224130_init/migration.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 1, 1, 8
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250303225537_init/migration.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 0, 0, 0, 1, 1, 15
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250304223428_x/migration.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 1, 1, 9
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250308215540_init/migration.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 0, 0, 0, 8, 2, 31
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250308223052_init/migration.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 10, 1, 35
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250308231717_init/migration.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 8, 1, 25
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/migrations/20250316144027_favourite_added/migration.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 0, 0, 0, 1, 1, 19
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/prisma/schema.prisma", "Prisma", 0, 0, 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 4, 6, 38
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/app.module.ts", "TypeScript", 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 21
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/login/login.service.spec.ts", "TypeScript", 67, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 14, 81
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/login/login.service.ts", "TypeScript", 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 34
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/logout/logout.service.spec.ts", "TypeScript", 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 19
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/logout/logout.service.ts", "TypeScript", 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 5
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/register/register.service.spec.ts", "TypeScript", 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 23
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/domain/register/register.service.ts", "TypeScript", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 14
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/outside/auth.controller.spec.ts", "TypeScript", 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 33
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/outside/auth.controller.ts", "TypeScript", 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 40
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/outside/auth.guard.ts", "TypeScript", 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 7, 55
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/outside/auth.module.ts", "TypeScript", 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 38
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/auth/outside/constants.ts", "TypeScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 10
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/domain/contact.entity.ts", "TypeScript", 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/domain/contacts.repository.ts", "TypeScript", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/domain/contacts.service.spec.ts", "TypeScript", 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 30
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/domain/contacts.service.ts", "TypeScript", 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 33
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/contacts.controller.spec.ts", "TypeScript", 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 21
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/contacts.controller.ts", "TypeScript", 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 13, 84
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/contacts.module.ts", "TypeScript", 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 24
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/dto/create-contact.dto.ts", "TypeScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/dto/update-contact.dto.ts", "TypeScript", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/contacts/outside/sql.contacts.repository.ts", "TypeScript", 98, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 115
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/logging/CustomLogger.ts", "TypeScript", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 23
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/logging/logger.ts", "TypeScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/main.ts", "TypeScript", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 25
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/prisma.service.ts", "TypeScript", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/create-task/createTask.spec.ts", "TypeScript", 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 34
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/create-task/createTask.ts", "TypeScript", 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 18
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/delete-task/deleteTask.spec.ts", "TypeScript", 36, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 9, 46
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/delete-task/deleteTask.ts", "TypeScript", 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 17
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/list-all-tasks/listAllTasks.spec.ts", "TypeScript", 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 51
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/list-all-tasks/listAllTasks.ts", "TypeScript", 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 13
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/model/task.ts", "TypeScript", 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 7
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/domain/model/taskRepository.ts", "TypeScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 9
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/outside/createTaskDto.ts", "TypeScript", 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/outside/sql.taskRepository.ts", "TypeScript", 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 73
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/outside/tasks.controller.spec.ts", "TypeScript", 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 60
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/outside/tasks.controller.ts", "TypeScript", 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 32
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/tasks/outside/tasks.module.ts", "TypeScript", 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 22
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/user/user.module.ts", "TypeScript", 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/user/user.service.spec.ts", "TypeScript", 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 20
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/src/user/user.service.ts", "TypeScript", 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8, 44
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/test/app.e2e-spec.ts", "TypeScript", 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 26
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/test/jest-e2e.json", "JSON", 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/tsconfig.build.json", "JSON", 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 5
+"/Users/paulbanfield/workspace/connect-crm/apps/backend/tsconfig.json", "JSON with Comments", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 22
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/.eslintrc.cjs", "JavaScript", 0, 0, 0, 69, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 6, 85
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/README.md", "Markdown", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 0, 0, 0, 16, 39
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/app.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 378, 0, 0, 0, 0, 0, 3, 58, 439
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/components/Navbar.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 21, 0, 0, 0, 0, 1, 4, 26
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/contactsService.ts", "TypeScript", 77, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37, 25, 139
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/data.ts", "TypeScript", 292, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 17, 318
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/root.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 5, 30
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/_index.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 0, 4, 35
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contacts.$contactId.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 0, 17, 116
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contacts.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 112, 0, 0, 0, 0, 0, 13, 125
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contactsExample.$contactId.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 106, 0, 0, 0, 0, 0, 20, 126
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contactsExample.$contactId_.destroy.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 3, 14
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contactsExample.$contactId_.edit.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 80, 0, 0, 0, 0, 0, 6, 86
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/contactsExample.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 118, 0, 0, 0, 0, 0, 13, 131
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/login.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 79, 0, 0, 0, 0, 0, 18, 97
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/routes/logout.tsx", "TypeScript JSX", 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 2, 13
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/app/sessions.ts", "TypeScript", 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 9, 47
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/package-lock.json", "JSON", 0, 12577, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 12578
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/package.json", "JSON", 0, 43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 44
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/tsconfig.json", "JSON with Comments", 0, 0, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 32
+"/Users/paulbanfield/workspace/connect-crm/apps/frontend/vite.config.ts", "TypeScript", 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 13
+"/Users/paulbanfield/workspace/connect-crm/terraform/.terraform.lock.hcl", "Terraform", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 0, 2, 2, 25
+"/Users/paulbanfield/workspace/connect-crm/terraform/main.tf", "Terraform", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 107, 0, 10, 14, 131
+"/Users/paulbanfield/workspace/connect-crm/terraform/terraform.tfstate", "JSON", 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10
+"Total", "-", 1454, 24883, 50, 130, 28, 9, 5, 378, 693, 104, 92, 128, 218, 192, 588, 28952
