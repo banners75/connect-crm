@@ -13,6 +13,8 @@ import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
 import { ContactsService } from '../domain/contacts.service';
 import { Contact } from '../domain/contact.entity';
+import { OnEvent } from '@nestjs/event-emitter';
+import { OwnerChangedEvent } from './ownerChange.event';
 
 export type UserRequest = {
   username: string;
@@ -74,6 +76,12 @@ export class ContactsController {
     };
 
     return this.contactsService.update(contact);
+  }
+
+
+  @Put(':id/owner/:newOwner')
+  changeOwner(@Param('id') id: string, @Param('newOwner') newOwner: string) {
+    return this.contactsService.changeOwner(+id, newOwner);
   }
 
   @Delete(':id')

@@ -4,13 +4,14 @@ import { ContactsService } from '../domain/contacts.service';
 import { SqlContactRepository } from './sql.contacts.repository';
 import { CustomLogger } from 'src/logging/CustomLogger';
 import { PrismaService } from 'src/prisma.service';
+import { OwnerChangedListener } from './ownerChanged.Listener';
 
 @Module({
-  imports: [],
   controllers: [ContactsController],
   providers: [
     Logger,
     PrismaService,
+    OwnerChangedListener,
     {
       provide: ContactsService,
       useValue: new ContactsService(
@@ -20,4 +21,8 @@ import { PrismaService } from 'src/prisma.service';
     },
   ],
 })
-export class ContactsModule {}
+export class ContactsModule {
+  constructor(private readonly contactsService: ContactsService, private readonly ownerChangedListener: OwnerChangedListener) {
+    contactsService.registerOwnerChangedObserver(ownerChangedListener);
+  }
+}

@@ -5,6 +5,8 @@ import { TasksModule } from './tasks/outside/tasks.module';
 import { AuthModule } from './auth/outside/auth.module';
 import { ContactsModule } from './contacts/outside/contacts.module';
 import { PrismaService } from './prisma.service';
+import { EventEmitterModule } from '@nestjs/event-emitter';
+import { NotificationsModule } from './notifications/outside/notifications.module';
 
 @Module({
   imports: [
@@ -13,6 +15,8 @@ import { PrismaService } from './prisma.service';
     AuthModule,
     ConfigModule.forRoot(),
     ContactsModule,
+    NotificationsModule,
+    EventEmitterModule.forRoot()
   ],
   controllers: [],
   providers: [PrismaService],
