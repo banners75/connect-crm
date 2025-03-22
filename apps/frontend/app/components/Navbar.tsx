@@ -5,7 +5,8 @@ export default function Navbar({ hasToken }: { hasToken: boolean }) {
     const location = useLocation();
     const showlogin = location.pathname !== "/login";
 
-    return (
+
+    return (    
         <nav className="topnav">
             {/* Logo */}
             <Link to="/">

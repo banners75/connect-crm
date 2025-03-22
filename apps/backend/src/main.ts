@@ -11,6 +11,12 @@ async function bootstrap() {
     }),
   });
 
+  app.enableCors({
+    origin: 'http://localhost:5173', // Your React Remix frontend
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Allow cookies & authentication headers
+  });
+
   await app.listen(process.env.PORT ?? 3000);
 }
 

@@ -10,10 +10,9 @@ export class OwnerChangedListener implements IOwnerChangedObserver{
     }
 
     notify(contactId: number, originalOwner: string, newOwner: string): void {
-        
+        console.log(`Owner changed for contact ${contactId} from ${originalOwner} to ${newOwner}`);
+
         const event = new OwnerChangedEvent(contactId, originalOwner, newOwner);
         this.eventEmitter.emit('contact.owner.changed', event); 
-
-        console.log('event emitted');
     }
 }

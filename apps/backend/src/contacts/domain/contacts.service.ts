@@ -18,6 +18,10 @@ export class ContactsService {
       throw new Error('Contact not found');
     }
 
+    if (contact.owner === newOwner) {
+      throw new Error('New owner is the same as the current owner');
+    }
+
     const originalOwner = contact.owner;
     contact.owner = newOwner;
 

@@ -35,4 +35,13 @@ model User {
   username String @unique
   password String
   contacts Contact[]
+  Notification UserNotification[]
+}
+
+model UserNotification {
+  id    Int     @default(autoincrement()) @id
+  message String
+  read Boolean @default(false)
+  ownedBy User @relation(fields: [owner], references: [username])
+  owner String
 }
