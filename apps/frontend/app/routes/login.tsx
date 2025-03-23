@@ -52,6 +52,17 @@ export const action = async ({ request }: { request: Request }) => {
 
   const data = await response.json();
   session.set("token", data.access_token);
+
+  if (!username) {
+    console.log('username not set');
+    return redirect("/login", {
+      headers: {
+        "Set-Cookie": await commitSession(session),
+      },
+    });
+  }
+
+  session.set("username", username.toString());
   console.log('session was set');
 
   return redirect("/", {

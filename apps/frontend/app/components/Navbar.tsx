@@ -1,17 +1,27 @@
 import { Form, Link, useLocation } from "@remix-run/react";
 
-export default function Navbar({ hasToken }: { hasToken: boolean }) {
+export default function Navbar({ hasToken, notifications }: { hasToken: boolean, notifications: any }) {
 
     const location = useLocation();
     const showlogin = location.pathname !== "/login";
 
 
-    return (    
+    return (
         <nav className="topnav">
             {/* Logo */}
             <Link to="/">
                 MyApp
             </Link>
+
+            <div style={{ display: hasToken ? "block" : "none" }}>
+                <ul>
+                    {notifications.map((notif: any, index: any) => (
+                        <li key={index}>
+                            {notif.recipient}: {notif.message}
+                        </li>
+                    ))}
+                </ul>
+            </div>
 
             <div style={{ display: hasToken ? "block" : "none" }} >
                 <Link to="/contacts">Contacts</Link>
