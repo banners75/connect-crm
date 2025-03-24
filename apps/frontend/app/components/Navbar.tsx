@@ -1,4 +1,5 @@
 import { Form, Link, useLocation } from "@remix-run/react";
+import Notifications from "./Notifications";
 
 export default function Navbar({ hasToken, notifications }: { hasToken: boolean, notifications: any }) {
 
@@ -13,7 +14,11 @@ export default function Navbar({ hasToken, notifications }: { hasToken: boolean,
                 MyApp
             </Link>
 
-            <div style={{ display: hasToken ? "block" : "none" }}>
+            <div>
+                <Notifications />
+            </div>
+
+            {/* <div>
                 <ul>
                     {notifications.map((notif: any, index: any) => (
                         <li key={index}>
@@ -21,7 +26,7 @@ export default function Navbar({ hasToken, notifications }: { hasToken: boolean,
                         </li>
                     ))}
                 </ul>
-            </div>
+            </div> */}
 
             <div style={{ display: hasToken ? "block" : "none" }} >
                 <Link to="/contacts">Contacts</Link>

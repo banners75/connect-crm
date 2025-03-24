@@ -8,7 +8,6 @@ import {
 
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import appStylesHref from "./app.css?url";
-import Navbar from "./components/Navbar";
 import { getSession } from "./sessions";
 import { useEffect, useState } from "react";
 import { getNotifications } from "./notifcationsService";
@@ -77,7 +76,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Navbar hasToken={hasToken} notifications={allNotifications} />
         <Outlet />
         <Scripts />
       </body>
