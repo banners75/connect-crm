@@ -8,7 +8,7 @@ import { Public } from 'src/auth/outside/constants';
 @Controller('notifications')
 export class NotificationsController {
 
-  private notificationStream = new Subject<{message: string, recipient: string}>();
+  private notificationStream = new Subject<{id: number, message: string, recipient: string}>();
 
   constructor(private readonly notificationsService: NotificationsService, private readonly eventEmitter: EventEmitter2) { }
 
@@ -18,15 +18,16 @@ export class NotificationsController {
     }
 
   @OnEvent('contact.owner.changed')
-  handleOwnerChangedEvent(payload: OwnerChangedEvent) {
+  async handleOwnerChangedEvent(payload: OwnerChangedEvent) {
     console.log(`notifications controller - Owner changed for contact ${payload.contactId} from ${payload.originalOwner} to ${payload.newOwner}`);
   
-    this.notificationsService.createNotification(
+    const newNotification = await this.notificationsService.createNotification(
       `Owner changed for contact ${payload.contactId} from ${payload.originalOwner} to ${payload.newOwner}`,
       payload.newOwner
     );
 
     const notification = {
+      id: newNotification.id,
       message: `Owner changed for contact ${payload.contactId} from ${payload.originalOwner} to ${payload.newOwner}`,
       recipient: payload.newOwner
     }
