@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getNotifications } from "~/notifcationsService";
 
 export function useNotifications(token?: string, username?: string, result?: any) {
-  const [notifications, setNotifications] = useState<{ id: string; message: string }[]>([]);
+  const [notifications, setNotifications] = useState<{ id: string; message: string }[]>(result || []);
 
   useEffect(() => {
     if (!token || !username) return;

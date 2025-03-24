@@ -47,7 +47,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        {hasToken && <LeftNav />}
+        {hasToken && <LeftNav notifications={notifications} />}
         <Outlet />
         <Scripts />
       </body>
