@@ -17,9 +17,9 @@ export async function getNotifications(token?: string, username?: string) {
     throw new Error(`Failed to fetch notifications: ${response.statusText}`);
   }
 
-  let notifications = await response.json();
-
+  const notifications = (await response.json()).filter((notification: any) => {
+    return notification.recipient === username && !notification.read;
+  });
   
-
   return notifications;
 }

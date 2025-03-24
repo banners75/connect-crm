@@ -78,7 +78,7 @@ export const action = async ({ request }: { request: Request }) => {
   session.set("username", username.toString());
   console.log('session was set');
 
-  return redirect("/dashboard", {
+  return redirect("/", {
     headers: {
       "Set-Cookie": await commitSession(session),
     },

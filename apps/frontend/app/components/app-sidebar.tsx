@@ -41,7 +41,7 @@ const data = {
       items: [
         {
           title: "Contacts",
-          url: "/dashboard/contacts",
+          url: "/contacts",
           isActive: true,
         },
       ],

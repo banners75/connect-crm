@@ -7,7 +7,7 @@ import {
   SidebarTrigger,
 } from "~/components/ui/sidebar"
 
-export default function Dashboard() {
+export default function LeftNav() {
 
     return (
         <SidebarProvider>

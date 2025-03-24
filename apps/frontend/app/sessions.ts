@@ -45,3 +45,16 @@ export async function requireUserSession(request: Request) {
 
   return session;
 }
+
+export async function getSessionData(request: Request) {
+  const cookie = request.headers.get("Cookie");
+  const session = await getSession(cookie);
+  const hasToken = session.has("token");
+
+  if (!hasToken) return { hasToken };
+
+  const token = session.get("token");
+  const username = session.get("username");
+
+  return { hasToken, token, username };
+}
