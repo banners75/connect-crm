@@ -1,14 +1,5 @@
-////////////////////////////////////////////////////////////////////////////////
-// 🛑 Nothing in here has anything to do with Remix, it's just a fake database
-////////////////////////////////////////////////////////////////////////////////
-
 import { matchSorter } from "match-sorter";
-// @ts-expect-error - no types, but it's a tiny function
-import sortBy from "sort-by";
-import invariant from "tiny-invariant";
-import Contact from "./routes/contacts.$contactId";
 import { redirect } from "@remix-run/react";
-import { destroySession, getSession } from "./sessions";
 
 type ContactMutation = {
   id: string;
@@ -23,44 +14,6 @@ type ContactMutation = {
 export type ContactRecord = ContactMutation & {
   id: string;
 };
-
-////////////////////////////////////////////////////////////////////////////////
-// This is just a fake DB table. In a real app you'd be talking to a real db or
-// fetching from an existing API.
-// const fakeContacts = {
-//   records: {} as Record<string, ContactRecord>,
-
-//   async getAll(): Promise<ContactRecord[]> {
-//     return Object.keys(fakeContacts.records)
-//       .map((key) => fakeContacts.records[key])
-//       .sort(sortBy("-createdAt", "last"));
-//   },
-
-//   async get(id: string): Promise<ContactRecord | null> {
-//     return fakeContacts.records[id] || null;
-//   },
-
-  //async create(values: ContactMutation): Promise<ContactRecord> {
-    // const id = values.id || Math.random().toString(36).substring(2, 9);
-    // const createdAt = new Date().toISOString();
-    // const newContact = { id, createdAt, ...values };
-    // fakeContacts.records[id] = newContact;
-    // return newContact;
-  // },
-
-  // async set(id: string, values: ContactMutation): Promise<ContactRecord> {
-  //   const contact = await fakeContacts.get(id);
-  //   invariant(contact, `No contact found for ${id}`);
-  //   const updatedContact = { ...contact, ...values };
-  //   fakeContacts.records[id] = updatedContact;
-  //   return updatedContact;
-  // },
-
-  // destroy(id: string): null {
-  //   delete fakeContacts.records[id];
-  //   return null;
-  // },
-// };
 
 export async function getContacts(token?: string, query?: string | null) {
 

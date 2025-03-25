@@ -28,7 +28,11 @@ export class ContactsService {
     const result = await this.update(contact);
 
     this.ownerChangedObserver.forEach((observer) => {
-      observer.notify(result.id, originalOwner, result.owner)
+      try {
+        observer.notify(result.id, originalOwner, result.owner);
+      } catch (error) {
+        this.logger.error(`Failed to notify observer: ${error.message}`);
+      }
     });
 
     return result;

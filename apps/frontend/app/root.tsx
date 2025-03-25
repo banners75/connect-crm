@@ -9,7 +9,7 @@ import {
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import appStylesHref from "./app.css?url";
 import { getSessionData } from "./sessions";
-import { getNotifications } from "./notifcationsService";
+import { getNotifications } from "./services/notifcationsService";
 import LeftNav from "./components/leftnav";
 import { mapNotifications, useNotifications } from "./hooks/use-notifications";
 

@@ -8,11 +8,11 @@ import {
 } from "@remix-run/react";
 
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
-import { getContacts, createEmptyContact } from "~/contactsService";
+import { getContacts, createEmptyContact } from "~/services/contactsService";
 import appStylesHref from "~/app.css?url";
 import { requireUserSession } from "~/sessions";
-import { DataTable } from "~/contactsTable/data-table";
-import { columns } from "~/contactsTable/columns";
+import { DataTable } from "~/components/contactsTable/data-table";
+import { columns } from "~/components/contactsTable/columns";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: appStylesHref },];
 
