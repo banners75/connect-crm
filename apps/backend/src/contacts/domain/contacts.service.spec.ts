@@ -82,9 +82,7 @@ describe('ContactsService', () => {
 
     /* eslint-disable */
     service.ownerChangedObserver.forEach((observer) => {
-      expect(observer.notify).toHaveBeenCalledWith(
-        contact.id, 'Alice', 'Bob'
-      );
+      expect(observer.notify).toHaveBeenCalledWith(contact.id, 'Alice', 'Bob');
     });
     /* eslint-enable */
   });
