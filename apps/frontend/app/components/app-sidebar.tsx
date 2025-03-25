@@ -32,7 +32,7 @@ const data = {
       items: [
         {
           title: "Contacts",
-          url: "/contacts",
+          url: "dashboard/contacts",
           isActive: true,
         },
       ],
@@ -56,7 +56,7 @@ export function AppSidebar({ notifications, ...props }: React.ComponentProps<typ
           {/* 🔔 Notification Bell with Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative">
+              <Button variant="ghost" className="relative cursor-pointer">
                 <Bell className="h-6 w-6" />
                 {notifications.length > 0 && (
                   <Badge className="absolute -top-1 -right-1 bg-red-500 h-5 w-5">

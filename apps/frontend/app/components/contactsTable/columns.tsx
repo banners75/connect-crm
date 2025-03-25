@@ -39,7 +39,7 @@ function ActionsCell({ contact }: { contact: Contact }) {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => navigate(`/contacts/${contact.id}`)}>
+                <DropdownMenuItem onClick={() => navigate(`/dashboard/contacts/${contact.id}`)}>
                     View contact
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />

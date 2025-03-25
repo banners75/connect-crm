@@ -9,12 +9,9 @@ import {
 
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { getContacts, createEmptyContact } from "~/services/contactsService";
-import appStylesHref from "~/styles/app.css?url";
 import { requireUserSession } from "~/sessions";
 import { DataTable } from "~/components/contactsTable/data-table";
 import { columns } from "~/components/contactsTable/columns";
-
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: appStylesHref },];
 
 export const loader = async ({request}: LoaderFunctionArgs) => {
 
