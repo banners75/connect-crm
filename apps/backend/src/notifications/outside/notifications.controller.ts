@@ -29,7 +29,8 @@ export class NotificationsController {
     const notification = {
       id: newNotification.id,
       message: `Owner changed for contact ${payload.contactId} from ${payload.originalOwner} to ${payload.newOwner}`,
-      recipient: payload.newOwner
+      recipient: payload.newOwner,
+      dateCreated: newNotification.dateCreated
     }
 
     this.notificationStream.next(notification);

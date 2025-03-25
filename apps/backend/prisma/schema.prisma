@@ -44,4 +44,5 @@ model UserNotification {
   read Boolean @default(false)
   ownedBy User @relation(fields: [owner], references: [username])
   owner String
+  dateCreated DateTime @default(now())
 }

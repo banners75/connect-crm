@@ -19,7 +19,7 @@ export async function getNotifications(token?: string, username?: string) {
 
   const notifications = (await response.json()).filter((notification: any) => {
     return notification.recipient === username && !notification.read;
-  });
+  }).sort((a: any, b: any) => new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime());
   
   return notifications;
 }

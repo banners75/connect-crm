@@ -3,5 +3,6 @@ export class UserNotification {
     message: string;
     recipient: string;
     read: boolean;
+    dateCreated: Date;
   }
   
