@@ -1,7 +1,7 @@
-// hooks/useNotifications.ts
+
 import { useEffect, useState } from "react";
 
-export function useNotifications(token?: string, username?: string, result?: any) {
+export function useNotifications(token?: string, username?: string, result?: Notification[]) {
     const [notifications, setNotifications] = useState<{ id: string; message: string }[]>(result || []);
 
     useEffect(() => {
@@ -36,11 +36,16 @@ export function useNotifications(token?: string, username?: string, result?: any
 }
 
 
-export function mapNotifications(notifications: any) {
-    return notifications.map((notification: any) => {
+export function mapNotifications(notifications: Notification[]) : Notification[] {
+    return notifications.map((notification: Notification) => {
         return {
             id: notification.id,
             message: notification.message,
         };
     });
 }
+
+export type Notification = {
+    id: string;
+    message: string;
+};

@@ -1,6 +1,6 @@
 "use client"
 
-import { redirect, useNavigate } from "@remix-run/react"
+import { useNavigate } from "@remix-run/react"
 import {
   BadgeCheck,
   Bell,

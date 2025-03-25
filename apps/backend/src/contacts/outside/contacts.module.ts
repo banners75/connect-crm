@@ -22,7 +22,10 @@ import { OwnerChangedListener } from './ownerChanged.Listener';
   ],
 })
 export class ContactsModule {
-  constructor(private readonly contactsService: ContactsService, private readonly ownerChangedListener: OwnerChangedListener) {
+  constructor(
+    private readonly contactsService: ContactsService,
+    private readonly ownerChangedListener: OwnerChangedListener,
+  ) {
     contactsService.registerOwnerChangedObserver(ownerChangedListener);
   }
 }

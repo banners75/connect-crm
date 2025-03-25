@@ -16,7 +16,7 @@ import { NotificationsModule } from './notifications/outside/notifications.modul
     ConfigModule.forRoot(),
     ContactsModule,
     NotificationsModule,
-    EventEmitterModule.forRoot()
+    EventEmitterModule.forRoot(),
   ],
   controllers: [],
   providers: [PrismaService],

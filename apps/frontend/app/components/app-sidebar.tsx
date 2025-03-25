@@ -1,4 +1,3 @@
-import { useLoaderData } from "@remix-run/react";
 import * as React from "react"
 
 import { NavUser } from "~/components/nav-user"

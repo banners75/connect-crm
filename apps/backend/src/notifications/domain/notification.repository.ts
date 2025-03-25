@@ -1,4 +1,4 @@
-import { UserNotification } from "./notification.entity";
+import { UserNotification } from './notification.entity';
 
 export interface INotificationsRepository {
   findAll(): Promise<UserNotification[]>;

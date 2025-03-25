@@ -7,7 +7,7 @@ import {
 } from "@remix-run/react";
 
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
-import appStylesHref from "./app.css?url";
+import appStylesHref from "./styles/app.css?url";
 import { getSessionData } from "./sessions";
 import { getNotifications } from "./services/notifcationsService";
 import LeftNav from "./components/leftnav";

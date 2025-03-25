@@ -1,7 +1,7 @@
 import { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
-import { Form, useActionData, redirect } from "@remix-run/react";
+import { redirect } from "@remix-run/react";
 import { commitSession, getSession } from "~/sessions";
-import appStylesHref from "~/app.css?url";
+import appStylesHref from "~/styles/app.css?url";
 
 import { cn } from "~/lib/utils"
 import { Button } from "~/components/ui/button"
@@ -17,8 +17,6 @@ import { Label } from "~/components/ui/label"
 
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: appStylesHref },];
-
-type ActionData = { error?: string };
 
 export async function loader({ request }: LoaderFunctionArgs) {
 
@@ -89,7 +87,6 @@ export default function LoginPage({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const actionData = useActionData<ActionData>();
 
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
@@ -119,7 +116,7 @@ export default function LoginPage({
                     <div className="flex items-center">
                       <Label htmlFor="password">Password</Label>
                       <a
-                        href="#"
+                        href="http://google.com"
                         className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                       >
                         Forgot your password?
@@ -138,7 +135,7 @@ export default function LoginPage({
                 </div>
                 <div className="mt-4 text-center text-sm">
                   Don&apos;t have an account?{" "}
-                  <a href="#" className="underline underline-offset-4">
+                  <a href="http://google.com" className="underline underline-offset-4">
                     Sign up
                   </a>
                 </div>

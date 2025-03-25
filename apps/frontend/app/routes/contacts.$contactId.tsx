@@ -1,6 +1,6 @@
 import { Form, useFetcher, useLoaderData } from "@remix-run/react";
 import type { FunctionComponent } from "react";
-import { getContact, updateContact, ContactRecord } from "~/contactsService";
+import { getContact, updateContact, ContactRecord } from "~/services/contactsService";
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import invariant from "tiny-invariant";
 import { requireUserSession } from "~/sessions";

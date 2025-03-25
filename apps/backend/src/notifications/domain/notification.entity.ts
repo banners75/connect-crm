@@ -1,8 +1,7 @@
 export class UserNotification {
-    id: number;
-    message: string;
-    recipient: string;
-    read: boolean;
-    dateCreated: Date;
-  }
-  
+  id: number;
+  message: string;
+  recipient: string;
+  read: boolean;
+  dateCreated: Date;
+}

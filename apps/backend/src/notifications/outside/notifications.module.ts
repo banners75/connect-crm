@@ -17,4 +17,4 @@ import { CustomLogger } from 'src/logging/CustomLogger';
     },
   ],
 })
-export class NotificationsModule { }
+export class NotificationsModule {}

@@ -26,6 +26,29 @@ export type Contact = {
     favourite: boolean
 }
 
+function ActionsCell({ contact }: { contact: Contact }) {
+    const navigate = useNavigate();
+
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                    <span className="sr-only">Open menu</span>
+                    <MoreHorizontal className="h-4 w-4" />
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                <DropdownMenuItem onClick={() => navigate(`/contacts/${contact.id}`)}>
+                    View contact
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Mark as favourite</DropdownMenuItem>
+                <DropdownMenuItem>Change Owner</DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+    );
+}
 
 export const columns: ColumnDef<Contact>[] = [
     {
@@ -50,29 +73,7 @@ export const columns: ColumnDef<Contact>[] = [
     },
     {
         id: "actions",
-        cell: ({ row }) => {
-            const contact = row.original
-
-            const navigate = useNavigate();
-
-            return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                            <span className="sr-only">Open menu</span>
-                            <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem onClick={() => navigate(`/contacts/${contact.id}`)}>View contact</DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DropdownMenuItem>Mark as favourite</DropdownMenuItem>
-                        <DropdownMenuItem>Change Owner</DropdownMenuItem>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            )
-        },
+        cell: ({ row }) => <ActionsCell contact={row.original} />,
     },
 ]
 

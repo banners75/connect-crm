@@ -1,6 +1,18 @@
 import { matchSorter } from "match-sorter";
 import { redirect } from "@remix-run/react";
 
+const API_BASE_URL = process.env.API_BASE_URL || "http://localhost:3000";
+
+interface Contact {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  owner: string;
+  notes: string;
+  favourite: boolean;
+}
+
 type ContactMutation = {
   id: string;
   name?: string;
@@ -15,77 +27,63 @@ export type ContactRecord = ContactMutation & {
   id: string;
 };
 
-export async function getContacts(token?: string, query?: string | null) {
+async function apiFetch(endpoint: string, options: RequestInit, token?: string) {
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+    ...options.headers,
+  };
 
-  let response = await fetch("http://localhost:3000/contacts", {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  });
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, { ...options, headers });
 
   if (!response.ok) {
     if (response.status === 401) {
-      throw redirect("/logout")
+      throw redirect("/logout");
     }
-    throw new Error(`Failed to fetch contacts: ${response.statusText}`);
+    throw new Error(`API Error: ${response.status} ${response.statusText}`);
   }
 
-  let contacts = await response.json();
+  return response.json();
+}
+
+export async function getContacts(token?: string, query?: string | null): Promise<Contact[]> {
+  let contacts = await apiFetch("/contacts", { method: "GET" }, token);
 
   if (query) {
-    contacts = matchSorter(contacts, query, {
-      keys: ["name"],
-    });
+    contacts = matchSorter(contacts, query, { keys: ["name"] });
   }
 
   return contacts;
 }
 
-export async function createEmptyContact() {
-  const newContact = { id: "", name: "", email: "", phone: "", notes: "", owner: "", favourite: false };
-  return newContact;
+export async function createEmptyContact(): Promise<Contact> {
+  return {
+    id: "",
+    name: "",
+    email: "",
+    phone: "",
+    notes: "",
+    owner: "",
+    favourite: false,
+  };
 }
 
-export async function getContact(id: string, token?: string) {
-  let contact = await fetch(`http://localhost:3000/contacts/${id}`, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-  });
-
-  return contact.json();
-}
-
-export async function updateContact(id: string, updates: ContactMutation, token?: string) {
-
-  let contact = await fetch(`http://localhost:3000/contacts/${id}`, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      "name": updates.name,
-      "email": updates.email,
-      "phone": updates.phone,
-      "notes": updates.notes,
-      "owner": updates.owner,
-      "favourite": updates.favourite
-    }),
-  });
-
+export async function getContact(id: string, token?: string): Promise<Contact | null> {
+  const contact = await apiFetch(`/contacts/${id}`, { method: "GET" }, token);
   if (!contact) {
-    throw new Error(`No contact found for ${id}`);
+    throw new Error(`Contact with ID ${id} not found`);
   }
-
   return contact;
 }
 
-export async function deleteContact(id: string) {
-  // fakeContacts.destroy(id);
+export async function updateContact(id: string, updates: Partial<Contact>, token?: string): Promise<Contact> {
+  return apiFetch(`/contacts/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(updates),
+  }, token);
+}
+
+export async function deleteContact(id: string, token?: string): Promise<void> {
+  await apiFetch(`/contacts/${id}`, { method: "DELETE" }, token);
 }
 

@@ -2,7 +2,7 @@ import { redirect } from "@remix-run/react";
 
 export async function getNotifications(token?: string, username?: string) {
 
-  let response = await fetch("http://localhost:3000/notifications", {
+  const response = await fetch("http://localhost:3000/notifications", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -17,9 +17,17 @@ export async function getNotifications(token?: string, username?: string) {
     throw new Error(`Failed to fetch notifications: ${response.statusText}`);
   }
 
-  const notifications = (await response.json()).filter((notification: any) => {
+  const notifications = (await response.json()).filter((notification: Notification) => {
     return notification.recipient === username && !notification.read;
-  }).sort((a: any, b: any) => new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime());
+  }).sort((a: Notification, b: Notification) => new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime());
   
   return notifications;
 }
+
+type Notification = {
+  id: string;
+  message: string;
+  recipient: string;
+  read: boolean;
+  dateCreated: Date;
+};
