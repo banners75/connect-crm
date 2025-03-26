@@ -41,7 +41,6 @@ export default function App() {
   return (
     <div>
       {hasToken && <LeftNav notifications={notifications} />}
-      <Outlet />
       <Scripts />
     </div>
   );

@@ -32,7 +32,7 @@ const data = {
       items: [
         {
           title: "Contacts",
-          url: "dashboard/contacts",
+          url: "/dashboard/contacts",
           isActive: true,
         },
       ],

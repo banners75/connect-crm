@@ -3,6 +3,7 @@ import {
   Outlet,
   Links,
   Scripts,
+  ScrollRestoration,
 } from "@remix-run/react";
 
 import type { LinksFunction } from "@remix-run/node";
@@ -22,6 +23,7 @@ export default function App() {
       </head>
       <body>
         <Outlet />
+        <ScrollRestoration />
         <Scripts />
       </body>
     </html>

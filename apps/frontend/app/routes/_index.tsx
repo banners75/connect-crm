@@ -18,7 +18,7 @@ import {
 export default function LandingPage() {
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="pl-4 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <Building2 className="h-6 w-6" />
@@ -562,7 +562,7 @@ export default function LandingPage() {
         </section>
       </main>
       <footer className="w-full border-t bg-background">
-        <div className="container flex flex-col gap-6 py-8 md:py-12 lg:flex-row">
+        <div className="pl-4 container flex flex-col gap-6 py-8 md:py-12 lg:flex-row">
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <Building2 className="h-6 w-6" />
@@ -673,7 +673,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-        <div className="container flex flex-col items-center justify-between gap-4 py-6 md:h-16 md:flex-row md:py-0">
+        <div className="pl-4 container flex flex-col items-center justify-between gap-4 py-6 md:h-16 md:flex-row md:py-0">
           <div className="text-center text-sm text-muted-foreground md:text-left">
             © {new Date().getFullYear()} CRMPro. All rights reserved.
           </div>
