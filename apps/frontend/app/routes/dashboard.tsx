@@ -1,19 +1,14 @@
 import {
-  Meta,
-  Outlet,
-  Links,
   useLoaderData,
   Scripts,
 } from "@remix-run/react";
 
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
-import appStylesHref from "~/styles/app.css?url";
 import { getSessionData } from "../sessions";
-import { getNotifications } from "../services/notifcationsService";
+import { getNotifications, markNotificationAsRead } from "../services/notifcationsService";
 import LeftNav from "../components/leftnav";
 import { mapNotifications, useNotifications } from "../hooks/use-notifications";
-
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: appStylesHref },];
+import { useState } from "react";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
 
@@ -30,17 +25,30 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function App() {
 
   const { hasToken, token, username, currentNotifications } = useLoaderData<typeof loader>();
-  let result;
+  let mappedNotifications;
 
   if (hasToken) {
-    result = mapNotifications(currentNotifications);
+    mappedNotifications = mapNotifications(currentNotifications);
   }
 
-  const notifications = useNotifications(token, username, result);
+  const [notifications, setNotifications] = useState(mappedNotifications || []);
+  const refreshedNotifications = useNotifications(token, username, notifications);
+
+  function deleteNotificationHandler(id: number): void {
+    console.log("Delete handler called");
+    
+    markNotificationAsRead(token, id).then(() => {
+      getNotifications(token, username).then((result) => {
+        mappedNotifications = mapNotifications(result);
+        setNotifications(mappedNotifications);
+      });
+    });
+
+  }
 
   return (
     <div>
-      {hasToken && <LeftNav notifications={notifications} />}
+      {hasToken && <LeftNav notifications={refreshedNotifications} onDeleteNotification={deleteNotificationHandler} />}
       <Scripts />
     </div>
   );

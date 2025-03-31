@@ -24,6 +24,17 @@ export async function getNotifications(token?: string, username?: string) {
   return notifications;
 }
 
+export async function markNotificationAsRead(token: string, notificationId: number) {
+
+  return fetch(`http://localhost:3000/notifications/${notificationId}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    }
+  }).then((response) => response.json());
+}
+
 type Notification = {
   id: string;
   message: string;

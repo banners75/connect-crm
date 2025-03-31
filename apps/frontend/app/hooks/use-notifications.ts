@@ -32,6 +32,12 @@ export function useNotifications(token?: string, username?: string, result?: Not
         };
     }, [token, username]);
 
+    useEffect(() => {
+        if (result) {
+            setNotifications(result); 
+        }
+    }, [result]);
+
     return notifications;
 }
 

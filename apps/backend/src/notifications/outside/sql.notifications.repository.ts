@@ -5,6 +5,14 @@ import { UserNotification } from '../domain/notification.entity';
 export class SqlNotificationsRepository implements INotificationsRepository {
   constructor(private prisma: PrismaService) {}
 
+  async markAsRead(id: number): Promise<any> {
+    
+    return this.prisma.userNotification.update({
+      where: { id: Number(id) },
+      data: { read: true },
+    });
+  }
+
   async findAll(): Promise<UserNotification[]> {
     const notifications = await this.prisma.userNotification.findMany();
     return notifications.map((notification) => ({

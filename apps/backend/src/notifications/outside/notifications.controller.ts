@@ -1,4 +1,4 @@
-import { Controller, Get, Sse } from '@nestjs/common';
+import { Controller, Get, Param, Put, Sse } from '@nestjs/common';
 import { NotificationsService } from '../domain/notifications.service';
 import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 import { OwnerChangedEvent } from 'src/contacts/outside/ownerChange.event';
@@ -22,6 +22,11 @@ export class NotificationsController {
   @Get()
   findAll() {
     return this.notificationsService.findAll();
+  }
+
+  @Put(':id')
+  markAsRead(@Param('id') id: number) {
+    return this.notificationsService.markAsRead(id);
   }
 
   @OnEvent('contact.owner.changed')

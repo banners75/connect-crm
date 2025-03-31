@@ -13,6 +13,14 @@ interface Contact {
   favourite: boolean;
 }
 
+interface NewContact {
+  name: string;
+  email: string;
+  phone: string;
+  owner: string;
+  notes: string;
+}
+
 type ContactMutation = {
   id: string;
   name?: string;
@@ -54,6 +62,14 @@ export async function getContacts(token?: string, query?: string | null): Promis
   }
 
   return contacts;
+}
+
+export async function createContact(contact: NewContact, token?: string): Promise<Contact[]> {
+  const newContact = await apiFetch("/contacts", {
+    method: "POST",
+    body: JSON.stringify(contact),
+  }, token);
+  return newContact;
 }
 
 export async function createEmptyContact(): Promise<Contact> {

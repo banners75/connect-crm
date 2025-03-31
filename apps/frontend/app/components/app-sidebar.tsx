@@ -16,7 +16,7 @@ import {
 } from "~/components/ui/sidebar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
-import { Bell } from "lucide-react";
+import { Bell, Trash2 } from "lucide-react";
 import { Badge } from "./ui/badge";
 
 // This is sample data.
@@ -46,8 +46,7 @@ type Notification = {
   message: string;
 };
 
-export function AppSidebar({ notifications, ...props }: React.ComponentProps<typeof Sidebar> & { notifications: Notification[] }) {
-
+export function AppSidebar({ notifications, onDeleteNotification, ...props }: React.ComponentProps<typeof Sidebar> & { notifications: Notification[], onDeleteNotification: (id: number) => void }) {
 
   return (
     <Sidebar {...props}>
@@ -73,6 +72,14 @@ export function AppSidebar({ notifications, ...props }: React.ComponentProps<typ
                 notifications.map((notif) => (
                   <DropdownMenuItem key={notif.id} className="flex items-center gap-2">
                     <span>{notif.message}</span>
+                    <button
+                       onClick={(e) => {
+                        e.stopPropagation(); 
+                        onDeleteNotification(+notif.id); 
+                      }}
+                      className="text-red-500 hover:text-red-700 hover:bg-red-50 px-3 py-1.5 cursor-pointer">
+                      <Trash2 size={16} />
+                    </button>
                   </DropdownMenuItem>
                 ))
               )}
