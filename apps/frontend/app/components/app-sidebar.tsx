@@ -18,8 +18,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Button } from "./ui/button";
 import { Bell, Trash2 } from "lucide-react";
 import { Badge } from "./ui/badge";
-import mixpanel from "mixpanel-browser";
 import { Link } from "@remix-run/react";
+import { analytics } from "~/utils/analytics";
 
 // This is sample data.
 const data = {
@@ -99,7 +99,7 @@ export function AppSidebar({ notifications, onDeleteNotification, ...props }: Re
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={item.isActive}>
-                      <Link to={item.url} onClick={ () => mixpanel.track("Contact_Menu_Click") }>{item.title}</Link>
+                      <Link to={item.url} onClick={ () => analytics.track("Menu Clicked: Contacts") }>{item.title}</Link>
                       {/* <a href={item.url}>{item.title}</a> */}
                     </SidebarMenuButton>
                   </SidebarMenuItem>

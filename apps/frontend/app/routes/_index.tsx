@@ -181,7 +181,7 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Schedule appointments, set reminders, and manage your team's activities.
+                    Schedule appointments, set reminders, and manage your team&apos;s activities.
                   </p>
                 </CardContent>
               </Card>
@@ -217,8 +217,8 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <blockquote className="mt-4 border-l-2 pl-4 italic text-muted-foreground">
-                    "CRMPro has revolutionized how we manage our customer relationships. Our sales team is more
-                    organized and efficient than ever."
+                  &quot;CRMPro has revolutionized how we manage our customer relationships. Our sales team is more
+                    organized and efficient than ever.&quot;
                   </blockquote>
                   <div className="mt-4">
                     <p className="text-sm font-medium">Sarah Johnson</p>
@@ -238,8 +238,8 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <blockquote className="mt-4 border-l-2 pl-4 italic text-muted-foreground">
-                    "The analytics and reporting features have given us insights we never had before. We've increased
-                    our conversion rate by 35%."
+                  &quot;The analytics and reporting features have given us insights we never had before. We&apos;ve increased
+                    our conversion rate by 35%.&quot;
                   </blockquote>
                   <div className="mt-4">
                     <p className="text-sm font-medium">Michael Chen</p>
@@ -259,8 +259,8 @@ export default function LandingPage() {
                     </div>
                   </div>
                   <blockquote className="mt-4 border-l-2 pl-4 italic text-muted-foreground">
-                    "As a small business, we needed an affordable CRM that could grow with us. CRMPro has been the
-                    perfect solution for our needs."
+                  &quot;As a small business, we needed an affordable CRM that could grow with us. CRMPro has been the
+                    perfect solution for our needs.&quot;
                   </blockquote>
                   <div className="mt-4">
                     <p className="text-sm font-medium">Emily Rodriguez</p>
@@ -281,7 +281,7 @@ export default function LandingPage() {
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Simple, transparent pricing</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Choose the plan that's right for your business. All plans include a 14-day free trial.
+                  Choose the plan that&apos;s right for your business. All plans include a 14-day free trial.
                 </p>
               </div>
             </div>
@@ -453,7 +453,7 @@ export default function LandingPage() {
                 <Card className="w-full">
                   <CardHeader>
                     <CardTitle>Get in Touch</CardTitle>
-                    <CardDescription>Fill out the form below and we'll get back to you shortly.</CardDescription>
+                    <CardDescription>Fill out the form below and we&apos;ll get back to you shortly.</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <form className="grid gap-4">

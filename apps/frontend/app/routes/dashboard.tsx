@@ -1,13 +1,8 @@
-import {
-  useLoaderData,
-  Scripts,
-} from "@remix-run/react";
-
+import { useLoaderData, Scripts } from "@remix-run/react";
 import { getNotifications, markNotificationAsRead } from "../services/notifcationsService";
 import LeftNav from "../components/leftnav";
 import { mapNotifications, useNotifications } from "../hooks/use-notifications";
-import { useEffect, useState } from "react";
-import { analytics } from "~/utils/analytics";
+import { useState } from "react";
 import { protectedLoader } from "~/utils/protectedLoader";
 import { useTrackUserLogin } from "~/hooks/use-track-login";
 

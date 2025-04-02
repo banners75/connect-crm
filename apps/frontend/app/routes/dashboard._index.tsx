@@ -1,8 +1,7 @@
-import { LoaderFunctionArgs, redirect } from "@remix-run/node";
-import { getSession } from "~/sessions";
+import { redirect } from "@remix-run/node";
 import { protectedLoader } from "~/utils/protectedLoader";
 
-export const loader = protectedLoader(async ({ request, userSession }) => { 
+export const loader = protectedLoader(async ({ userSession }) => { 
 
   if (!userSession.token) {
     return redirect("/login")

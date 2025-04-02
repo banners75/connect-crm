@@ -30,6 +30,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "~/components/ui/sidebar"
+import { analytics } from "~/utils/analytics"
 
 export function NavUser({
   user,
@@ -51,7 +52,10 @@ export function NavUser({
             <SidebarMenuButton
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-            >
+              onPointerDown={() => {
+                analytics.track("Button Clicked: User Menu")
+              }}
+           >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
@@ -104,7 +108,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => navigate("/logout")}>
+            <DropdownMenuItem onClick={() => { analytics.track("Button Clicked: Logout"); navigate("/logout") }}>
               <LogOut />
               Log out
             </DropdownMenuItem>

@@ -21,13 +21,14 @@ import {
 
 } from "@remix-run/react";
 
-import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
+import type { ActionFunctionArgs } from "@remix-run/node";
 import { ContactRecord, createContact, getContacts } from "~/services/contactsService";
 import { requireUserSession } from "~/sessions";
 import { Button } from "~/components/ui/button"
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import { protectedLoader } from "~/utils/protectedLoader";
+import { analytics } from "~/utils/analytics";
 
 
 export const loader = protectedLoader(async ({ userSession }) => {
@@ -63,7 +64,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
         owner,
         notes,
       })
-    } catch (error) {
+    } catch {
       return Response.json({ error: "Invalid form data" }, { status: 400 })
     }
 
@@ -89,7 +90,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
 export default function ContactsPage() {
 
-  const { contacts } = useLoaderData<{ contacts: any[] }>();
+  const { contacts } = useLoaderData<{ contacts: ContactRecord[] }>();
   const [selectedContact, setSelectedContact] = useState<ContactRecord | null>(null)
 
   const actionData = useActionData<typeof action>()
@@ -119,6 +120,7 @@ export default function ContactsPage() {
   }, [actionData, form])
 
   const onSubmit = (data: { [s: string]: unknown } | ArrayLike<unknown>) => {
+    analytics.track("Button Clicked: Save Contact");
     const formData = new FormData()
     formData.append("intent", "create")
 
@@ -131,12 +133,14 @@ export default function ContactsPage() {
   }
 
   const handleAddNewClick = () => {
+    analytics.track("Button Clicked: Add Contact");
     setSelectedContact(null)
     setIsAddingContact(true)
     form.reset()
   }
 
   const handleCancel = () => {
+    analytics.track("Button Clicked: Cancel Add Contact");
     setIsAddingContact(false)
     form.reset()
   }
@@ -170,6 +174,7 @@ export default function ContactsPage() {
               <TableRow
                 key={contact.id}
                 onClick={() => {
+                  analytics.track("Contact Viewed", { contactId: contact.id });
                   setSelectedContact(contact)
                   setIsAddingContact(false)
                 }}
