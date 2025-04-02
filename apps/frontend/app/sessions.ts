@@ -36,10 +36,9 @@ const { getSession, commitSession, destroySession } =
 export { getSession, commitSession, destroySession };
 
 export async function requireUserSession(request: Request) {
-  const cookie = request.headers.get("Cookie");
-  const session = await getSession(cookie);
+  const session = await getSessionData(request);
 
-  if (!session.has("token")) {
+  if (!(session).hasToken) {
     throw redirect("/login");
   }
 

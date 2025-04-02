@@ -8,6 +8,7 @@ import {
 
 import type { LinksFunction } from "@remix-run/node";
 import appStylesHref from "./styles/app.css?url";
+import PageAnalytics from "./components/page.analytics";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: appStylesHref },];
 
@@ -22,6 +23,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <PageAnalytics />
         <Outlet />
         <ScrollRestoration />
         <Scripts />

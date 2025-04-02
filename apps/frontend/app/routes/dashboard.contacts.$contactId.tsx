@@ -4,12 +4,12 @@ import { getContact, updateContact, ContactRecord } from "~/services/contactsSer
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import invariant from "tiny-invariant";
 import { requireUserSession } from "~/sessions";
+import { protectedLoader } from "~/utils/protectedLoader";
 
-export const loader = async ({params, request}: LoaderFunctionArgs) => {
+export const loader = protectedLoader(async ({ params, userSession }) => {
 
-    const session = await requireUserSession(request);
     invariant(params.contactId, "Missing contactId param");
-    const contact = await getContact(params.contactId, session.get("token"));
+    const contact = await getContact(params.contactId, userSession.token);
 
     if (!contact) {
         console.log('contact not found');
@@ -17,13 +17,13 @@ export const loader = async ({params, request}: LoaderFunctionArgs) => {
     }
 
     return Response.json({ contact });
-};
+});
 
 export const action = async ({params,request}: ActionFunctionArgs) => {
 
     const session = await requireUserSession(request);
     invariant(params.contactId, "Missing contactId param");
-    const contact = await getContact(params.contactId, session.get("token"));
+    const contact = await getContact(params.contactId, session.token);
 
     if (!contact) {
         console.log('contact not found');
@@ -39,7 +39,7 @@ export const action = async ({params,request}: ActionFunctionArgs) => {
         notes: contact.notes,
         owner: contact.owner,
         favourite: formData.get("favourite") === "true",
-    }, session.get("token"));
+    }, session.token);
 };
 
 export default function Contact() {

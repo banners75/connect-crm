@@ -27,15 +27,13 @@ import { requireUserSession } from "~/sessions";
 import { Button } from "~/components/ui/button"
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
+import { protectedLoader } from "~/utils/protectedLoader";
 
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-
-  const session = await requireUserSession(request);
-  const contacts = await getContacts(session.get("token"));
-
+export const loader = protectedLoader(async ({ userSession }) => {
+  const contacts = await getContacts(userSession.token);
   return Response.json({ contacts });
-};
+});
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -79,7 +77,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     }
 
     const session = await requireUserSession(request);
-    const token = session.get("token");
+    const token = session.token;
     createContact(newContact, token);
 
     return Response.json({ success: true, contact: newContact })

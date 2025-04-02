@@ -1,7 +1,6 @@
-import { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
+import { LoaderFunctionArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/react";
 import { commitSession, getSession } from "~/sessions";
-import appStylesHref from "~/styles/app.css?url";
 
 import { cn } from "~/lib/utils"
 import { Button } from "~/components/ui/button"
@@ -14,9 +13,6 @@ import {
 } from "~/components/ui/card"
 import { Input } from "~/components/ui/input"
 import { Label } from "~/components/ui/label"
-
-
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: appStylesHref },];
 
 export async function loader({ request }: LoaderFunctionArgs) {
 
