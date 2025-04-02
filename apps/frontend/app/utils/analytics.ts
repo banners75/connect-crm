@@ -26,14 +26,14 @@ class Analytics {
   }
 
   // Track events
-  public track(event: string, data?: Record<string, Dict>): void {
+  public track(event: string, data?: Record<string, any>): void {
     if (typeof window !== "undefined") {
       mixpanel.track(event, data);
     }
   }
 
   // Set user properties
-  public setUserProperties(properties: Record<string, Dict>): void {
+  public setUserProperties(properties: Record<string, any>): void {
     if (typeof window !== "undefined") {
       mixpanel.people.set(properties);
     }

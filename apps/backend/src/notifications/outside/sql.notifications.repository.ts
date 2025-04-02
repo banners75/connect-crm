@@ -6,7 +6,6 @@ export class SqlNotificationsRepository implements INotificationsRepository {
   constructor(private prisma: PrismaService) {}
 
   async markAsRead(id: number): Promise<any> {
-    
     return this.prisma.userNotification.update({
       where: { id: Number(id) },
       data: { read: true },

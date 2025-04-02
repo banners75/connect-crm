@@ -2,7 +2,6 @@ import { INotificationsRepository } from './notification.repository';
 import { ILogger } from 'src/logging/logger';
 
 export class NotificationsService {
-
   markAsRead(id: number) {
     return this.notificationsRepository.markAsRead(id);
   }

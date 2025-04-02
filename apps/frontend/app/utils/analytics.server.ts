@@ -19,7 +19,7 @@ class AnalyticsServer {
     return AnalyticsServer.instance;
   }
 
-  public track(event: string, data: Record<string, mixpanel.PropertyDict> = {}): void {
+  public track(event: string, data: Record<string, any> = {}): void {
     this.mixpanelServer.track(event, data);
   }
 
